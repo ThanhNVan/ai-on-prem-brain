@@ -5,22 +5,16 @@
    pwsh -File setup.ps1              install packages, fetch the model, build the graph, run the tests
    pwsh -File setup.ps1 -WhatIf      print the steps and change nothing
    pwsh -File setup.ps1 -SkipTest    skip the self-test
-   pwsh -File setup.ps1 -BrainHome <path>  use a different user rules/runtime folder
 
  Needs: node 20 or newer, npm, and internet (packages from npm, a 23 MB model from huggingface.co).
- Dependencies stay in this checkout. Runtime graphs, vectors, and history are stored under <BrainHome>\brain.
- The hook line in SettingsFile is checked, not edited; see setup.md to configure Codex.
+ Writes only inside this folder: node_modules/, data/ (model + vectors) and graph.json. None of it goes into git.
+ The hook line in settings.json is checked, not edited. install.ps1 restores that file.
 #>
-param(
-  [switch]$WhatIf,
-  [switch]$SkipTest,
-  [string]$SettingsFile = (Join-Path $env:USERPROFILE '.codex\hooks.json'),
-  [string]$BrainHome = (Join-Path $env:USERPROFILE '.codex')
-)
+param([switch]$WhatIf, [switch]$SkipTest, [string]$SettingsFile = (Join-Path $env:USERPROFILE '.claude\settings.json'))
 
 $ErrorActionPreference = 'Stop'
 $here = $PSScriptRoot
-$env:BRAIN_HOME = $BrainHome   # keep runtime files in the user's Codex home, separate from this shared checkout
+$env:BRAIN_HOME = Split-Path -Parent $here   # work on the folder this script lives in (normally ~/.claude), never on another profile's brain
 $total = 7
 function Step([int]$n, [string]$msg) {
   $bar = ('#' * [int](10 * $n / $total)).PadRight(10, '-')
@@ -69,14 +63,15 @@ Write-Host "  removed $($drop.Count) item(s); keeping $os/$arch"
 Step 4 'build the graph and the meaning numbers (the model comes from git; it is only downloaded if missing)'
 Run 'build' 'node' @((Join-Path $here 'brain.js'), 'build', '--require-embeddings')
 
-Step 5 'optional project map'
-if (-not $env:MK_DOCS) { Write-Host '  skipped: set MK_DOCS to a docs folder containing graphify-out\graph.json to build the optional project map' }
-elseif (-not (Test-Path (Join-Path $env:MK_DOCS 'graphify-out\graph.json'))) { Write-Host '  skipped: MK_DOCS does not contain graphify-out\graph.json' }
+Step 5 'build the Makillez map from Makillez-master-docs (set MK_DOCS if the folder is not ~/source/repos/Makillez-master-docs)'
+$mkDocs = if ($env:MK_DOCS) { $env:MK_DOCS } else { Join-Path $env:USERPROFILE 'source\repos\Makillez-master-docs' }
+if (-not (Test-Path (Join-Path $mkDocs 'graphify-out\graph.json'))) { Write-Host "  skipped: no graphify-out\graph.json under $mkDocs (clone Makillez-master-docs, then run: node brain.js build-mk)" }
 elseif ($WhatIf) { Write-Host '  (dry run) node --max-old-space-size=4096 brain.js build-mk' }
 else {
   & node --max-old-space-size=4096 (Join-Path $here 'brain.js') 'build-mk'
-  if ($LASTEXITCODE) { Write-Host '  project map not built (not fatal); see README.md' }
+  if ($LASTEXITCODE) { Write-Host '  map not built (not fatal); run: node brain.js build-mk' }
 }
+
 Step 6 'run the self-test'
 if ($SkipTest) { Write-Host '  skipped' } else { Run 'self-test' 'node' @((Join-Path $here 'test-brain.js')); Run 'history self-test' 'node' @((Join-Path $here 'test-history.js')); Run 'keyword graph self-test' 'node' @((Join-Path $here 'test-graph.js')); Run 'map self-test' 'node' @((Join-Path $here 'test-mk.js')) }
 
@@ -84,8 +79,8 @@ Step 7 'check the hook line in settings.json'
 if (Test-Path $SettingsFile) {
   $s = Get-Content $SettingsFile -Raw
   if ($s -match 'brain[/\\]+brain\.js\\?"? hook') { Write-Host '  hook is in settings.json' }
-  else { Write-Host "  MISSING. Add this under hooks.UserPromptSubmit in $SettingsFile :"; Write-Host '    { "hooks": [ { "type": "command", "command": "node \"<path-to-ai-on-prem-brain>/brain.js\" hook", "timeout": 15 } ] }' }
-} else { Write-Host "  no settings file at $SettingsFile (see setup.md to configure a hook)" }
+  else { Write-Host "  MISSING. Add this under hooks.UserPromptSubmit in $SettingsFile :"; Write-Host '    { "hooks": [ { "type": "command", "command": "node \"<your home>/.claude/brain/brain.js\" hook", "timeout": 15 } ] }' }
+} else { Write-Host "  no settings file at $SettingsFile (run install.ps1 first)" }
 
 if (-not $WhatIf) {
   $mb = { param($p) if (Test-Path $p) { [math]::Round(((Get-ChildItem $p -Recurse -File -Force | Measure-Object Length -Sum).Sum) / 1MB) } else { 0 } }

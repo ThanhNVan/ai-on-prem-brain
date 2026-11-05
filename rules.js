@@ -1,4 +1,4 @@
-// Rules graph: turn ~/.codex rules and memory into graph.json, then score its nodes by words and synonyms (no model needed).
+// Rules graph: turn ~/.claude rules and memory into graph.json, then score its nodes by words and synonyms (no model needed).
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -9,7 +9,7 @@ const STOP = new Set('the and for with that this from have has not are was were 
 const GRAPH_VERSION = 3; // bump when the way words are cut changes (STOP, stem, tokens): old graph.json files are then rebuilt
 const SECRET = /\b(key|token|secret|password)\b.*[A-Za-z0-9_-]{24,}/i; // a line that looks like it holds a key is never stored
 
-const homeDir = () => process.env.BRAIN_HOME || path.join(os.homedir(), '.codex');
+const homeDir = () => process.env.BRAIN_HOME || path.join(os.homedir(), '.claude');
 const graphFile = (home) => path.join(home, 'brain', 'graph.json');
 const dataDir = (home) => path.join(home, 'brain', 'data');
 function writeAtomic(file, text) { // write to a temp name, then rename: a reader never sees half a file
@@ -33,7 +33,7 @@ const spans = (text) => [...text.matchAll(/`([^`]{2,60})`/g)].map((m) => m[1].to
 
 function sources(home) {
   const list = [];
-  for (const f of ['AGENTS.md', 'CLAUDE.md', 'preferences.md']) if (fs.existsSync(path.join(home, f))) list.push({ rel: f, abs: path.join(home, f), note: false });
+  for (const f of ['CLAUDE.md', 'preferences.md']) if (fs.existsSync(path.join(home, f))) list.push({ rel: f, abs: path.join(home, f), note: false });
   const proj = path.join(home, 'projects');
   if (fs.existsSync(proj)) {
     for (const p of fs.readdirSync(proj)) {
@@ -92,7 +92,7 @@ function build(home = homeDir()) {
       const section = s.note ? name.trim() : b.section;
       nodes.push({
         id: `${s.rel}#${nodes.length}`, label: b.text.slice(0, 60), file: s.rel, section, text: b.text, kind,
-        inContext: s.rel === 'AGENTS.md' || s.rel === 'CLAUDE.md', stale: !!stale, kw: [...new Set([...tokens(b.text), ...spans(b.text)])],
+        inContext: s.rel === 'CLAUDE.md', stale: !!stale, kw: [...new Set([...tokens(b.text), ...spans(b.text)])],
       });
     }
   }

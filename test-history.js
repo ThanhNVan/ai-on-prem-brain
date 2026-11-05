@@ -142,7 +142,9 @@ process.on('exit', () => {
 
   // 8: hook wiring skips automated, slash, and short prompts, then stores a user prompt.
   const hh = home('history-hook-test-');
-  fs.writeFileSync(path.join(hh, 'preferences.md'), '# Test preferences\n\n- Keep the progress note for this test.\n');
+  const prefSource = path.join(os.homedir(), '.claude', 'preferences.md');
+  assert.ok(fs.existsSync(prefSource), 'source preferences.md is unavailable for temp hook home');
+  fs.copyFileSync(prefSource, path.join(hh, 'preferences.md'));
   const automated = runHook(hh, '<task-notification>\n<task-id>x</task-id> finished and has a long body here');
   assert.strictEqual(automated.status, 0, 'automated hook exit status');
   assert.strictEqual(fs.existsSync(histDir(hh)), false, 'automated hook created history');

@@ -43,7 +43,7 @@ All 20 sessions exited successfully. These are observations of the answers, not 
 
 The mean was **71.6 seconds and 33,392 tokens per question with hooks off**, and **102.7 seconds and 38,554 tokens with hooks on**. Totals were 333,918 and 385,539 tokens respectively. This small, concurrent run does not establish a general speed or cost difference.
 
-For question 7, the on answer said the local API must supply Swagger on port 5257. A separate check confirmed that `src/ESG.WebApp/ReportClientApp/api-report.nswag:7` points to `http://localhost:5257/swagger/internal/swagger.json`. The off answer gave the generation command but omitted this prerequisite. See `esg-master-docs/technical-docs/for-dev/08-development-workflow.md` and `esg/src/ESG.WebApp/ReportClientApp/api-report.nswag`.
+For question 7, the on answer said the local API must supply Swagger on port 5257. A separate check confirmed that `src/ESG.WebApp/ReportClientApp/api-report.nswag:7` points to `http://localhost:5257/swagger/internal/swagger.json`. The off answer gave the generation command but omitted this prerequisite. See [ESG development workflow](../../source/repos/esg-master-docs/technical-docs/for-dev/08-development-workflow.md) and [NSwag configuration](../../source/repos/esg/src/ESG.WebApp/ReportClientApp/api-report.nswag).
 
 The ESG docs themselves were verified against commit `b736dab2` on 2026-10-28 and can be stale. The sessions could read the neighboring `esg` source checkout, but not all chose to do so. No app, pipeline or automated tests were run. The raw session logs were kept in the local temporary `brain-live-esg-20261105` folder; they may contain project details and are not part of this document.
 
@@ -54,7 +54,7 @@ Use the same question in a fresh session for each hook setting. Ask Codex to ans
 1. **Debugging:** In ESG, why might `EmailSenderService.SendAsync` return without throwing when sending an email fails? Point to the code and suggest a small fix.
 2. **Programming:** Write a C# function `CanAddAttachment(int currentCount, int maxCount)` that returns `true` only when adding one attachment would not exceed the limit. Assume both inputs are non-negative. Give examples for `(2, 3)`, `(3, 3)` and `(0, 0)`.
 
-For the first question, check that the answer identifies the catch block and telemetry call in `esg/src/ESG.Shared/EmailSender/EmailSenderService.cs`, and explains that rethrowing changes the caller's error handling. This is a source-based scenario, not a reproduced incident. For the second, expected results are `true`, `false` and `false`. A comparison such as `currentCount < maxCount` also avoids integer overflow.
+For the first question, check that the answer identifies the catch block and telemetry call in [EmailSenderService](../../source/repos/esg/src/ESG.Shared/EmailSender/EmailSenderService.cs), and explains that rethrowing changes the caller's error handling. This is a source-based scenario, not a reproduced incident. For the second, expected results are `true`, `false` and `false`. A comparison such as `currentCount < maxCount` also avoids integer overflow.
 
 | Test | Hooks off score / 100 | Hooks off tokens | Hooks on score / 100 | Hooks on tokens | Result |
 |---|---:|---:|---:|---:|---|
@@ -72,7 +72,7 @@ Codex could not find its home directory inside the workspace sandbox, but worked
 
 Question: “Debug this ESG issue using the source: an email send fails, but the caller sees the operation complete without an exception. Trace the relevant code and a real caller, identify the cause and limits of what can be concluded, propose a specific fix and a regression test. Cite exact files and make no changes. Do not claim you reproduced it unless you actually did.”
 
-The question is based on a real code path: `EmailSenderService.SendAsync` catches exceptions from the send operation, records them in telemetry, and does not rethrow them. This is a source finding, not a reproduced incident. See `esg/src/ESG.Shared/EmailSender/EmailSenderService.cs`.
+The question is based on a real code path: `EmailSenderService.SendAsync` catches exceptions from the send operation, records them in telemetry, and does not rethrow them. This is a source finding, not a reproduced incident. See [EmailSenderService](../../source/repos/esg/src/ESG.Shared/EmailSender/EmailSenderService.cs).
 
 | Measure | Hooks off | Hooks on |
 |---|---:|---:|
@@ -121,6 +121,6 @@ Reviewed on 2026-11-05 after the runs. Each question has four equally weighted c
 | 10 | `main` and path filter; deployment stages; build guide drift; PR trigger and exclusion drift. | 4/4 | 4/4 |
 | **Total** | **Points earned** | **39/40 (97.5%)** | **39/40 (97.5%)** |
 
-The hooks-off answer to question 7 omitted the running API and Swagger prerequisite; the NSwag config points to the local endpoint. The hooks-on answer included it. The hooks-on answer to question 9 said the PR pipeline runs tests without stating that automatic PR triggering is not declared in YAML. The hooks-off answer flagged this uncertainty. The YAML declares `trigger: none` and no `pr` trigger; settings outside the repository were not checked. See `esg/src/ESG.WebApp/ReportClientApp/api-report.nswag`, `esg/pipelines/pull-request.yaml`, and `esg-master-docs/technical-docs/for-dev/13-cicd-process.md`.
+The hooks-off answer to question 7 omitted the running API and Swagger prerequisite; the NSwag config points to the local endpoint. The hooks-on answer included it. The hooks-on answer to question 9 said the PR pipeline runs tests without stating that automatic PR triggering is not declared in YAML. The hooks-off answer flagged this uncertainty. The YAML declares `trigger: none` and no `pr` trigger; settings outside the repository were not checked. See [NSwag config](../../source/repos/esg/src/ESG.WebApp/ReportClientApp/api-report.nswag), [PR pipeline](../../source/repos/esg/pipelines/pull-request.yaml), and [CI/CD process](../../source/repos/esg-master-docs/technical-docs/for-dev/13-cicd-process.md).
 
 These scores are tied on this checklist. The on answers more often inspected source in the first three questions, but that is a separate observation from the score. All hooks were disabled in the off condition, and brain injection was not visible in the logs, so the review cannot attribute any quality difference to the brain alone. The ten questions were selected before the runs, but the checks were written after reading the answers. A stronger comparison would pre-register the checks, hide the run labels from an independent reviewer and isolate the brain hook.

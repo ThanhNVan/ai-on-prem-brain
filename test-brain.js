@@ -1,4 +1,4 @@
-// Self-test for brain.js. Uses a fake ~/.codex in a temp folder. Prints "ALL PASSED" or throws.
+// Self-test for brain.js. Uses a fake ~/.claude in a temp folder. Prints "ALL PASSED" or throws.
 const assert = require('assert');
 const fs = require('fs');
 const os = require('os');

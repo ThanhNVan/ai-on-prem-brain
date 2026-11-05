@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-// Brain graph v2: turn ~/.codex rules and memory into a graph, then pick the few nodes a prompt needs.
+// Brain graph v2: turn ~/.claude rules and memory into a graph, then pick the few nodes a prompt needs.
 // Matches by words (plus thesaurus.json synonyms) and by meaning (a small local embedding model).
 //   node brain.js build [--require-embeddings]   build graph.json, then vectors (downloads the model once)
 //   node brain.js query "<text>"                 show what would be injected for this text
 //   node brain.js hook                           UserPromptSubmit hook (JSON on stdin, JSON on stdout, fails open)
 //   node brain.js refresh                        embed nodes that have no vector yet (the hook starts this itself)
-// Env BRAIN_HOME overrides ~/.codex (used by the test). Only the build step may use the network (model download).
+// Env BRAIN_HOME overrides ~/.claude (used by the test). Only the build step may use the network (model download).
 const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');

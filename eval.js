@@ -6,7 +6,7 @@
 const path = require('path');
 const os = require('os');
 const brain = require('./brain.js');
-const home = process.env.BRAIN_HOME || path.join(os.homedir(), '.codex');
+const home = process.env.BRAIN_HOME || path.join(os.homedir(), '.claude');
 
 const CASES = [
   // same meaning, other words

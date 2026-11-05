@@ -31,7 +31,7 @@ const REL = { calls: 1, implements: 1, inherits: 1, extends: 1, dispatches_to: 1
 
 // Projects in the one map file: Makillez (the default), ESG, AIPO and general technical docs (tech). A search looks at one project only, so a new project cannot disturb the Makillez answers.
 const PROJECTS = { makillez: { dir: 'Makillez-master-docs', name: 'Makillez' }, esg: { dir: 'esg-master-docs', name: 'ESG' }, aipo: { dir: 'metizone-AIPO-code-docs', name: 'AIPO' }, tech: { name: 'Tech docs' } };
-const docsRoot = (project = 'makillez') => (project === 'makillez' && process.env.MK_DOCS) || (project === 'tech' ? path.join(homeDir(), 'brain', 'data', 'corpus', 'tech') : path.join(os.homedir(), 'source', 'repos', PROJECTS[project].dir));
+const docsRoot = (project = 'makillez') => (project === 'makillez' && process.env.MK_DOCS) || (project === 'tech' ? path.join(os.homedir(), '.claude', 'brain', 'data', 'corpus', 'tech') : path.join(os.homedir(), 'source', 'repos', PROJECTS[project].dir));
 const dbFile = (home) => path.join(dataDir(home), 'mk.db');   // one file for all projects; every row carries its project
 const f32 = (b) => (b.byteOffset % 4 === 0 ? new Float32Array(b.buffer, b.byteOffset, b.byteLength / 4) : new Float32Array(new Uint8Array(b).buffer));   // meaning numbers read in place (a copy only when the bytes are not aligned): the scan covers every chunk of a project
 const sqlite = () => require('node:sqlite').DatabaseSync;       // loaded here so a missing module never breaks the hook

@@ -6,7 +6,7 @@ A `UserPromptSubmit` hook. It reads your rules and memory notes and adds the few
 In short:
 ```mermaid
 flowchart TD
-    S["AGENTS.md, preferences.md, memory notes"] --> N["One bullet or paragraph = one node (lines that look like keys are skipped)"]
+    S["preferences.md, CLAUDE.md, memory notes"] --> N["One bullet or paragraph = one node (lines that look like keys are skipped)"]
     N --> G[("rules graph: brain/graph.json")]
     N -. "background" .-> V[("data/vectors.json: meaning numbers")]
 
@@ -15,7 +15,7 @@ flowchart TD
     Q -- no --> M["Score nodes: words + synonyms + meaning (meaning only if the model answers in 9 s)"]
     G --> M
     V --> M
-    M --> D["Add linked neighbours, drop rules already in AGENTS.md and weak ones, keep at most 6 rules / 2,400 chars"]
+    M --> D["Add linked neighbours, drop rules already in CLAUDE.md and weak ones, keep at most 6 rules / 2,400 chars"]
     M -. "same prompt vector" .-> HS["Up to 2 similar earlier prompts, bar 0.60"]
     D --> A["Print additionalContext"]
     HS --> A
@@ -27,7 +27,7 @@ Step by step:
 ```mermaid
 flowchart TD
     subgraph BUILD["Build the graph (when a source file changes)"]
-        S["Sources: AGENTS.md, preferences.md, memory notes"] --> B["Split into blocks: one bullet or paragraph = one node"]
+        S["Sources: preferences.md, CLAUDE.md, memory notes"] --> B["Split into blocks: one bullet or paragraph = one node"]
         B --> F{"Looks like it holds a key?"}
         F -- yes --> X["Skip the block"]
         F -- no --> N["Node with keywords"]
@@ -53,14 +53,14 @@ flowchart TD
     K --> K2
 
     K2 --> NB["Add linked neighbours at lower score"]
-    NB --> D["Drop rules already in AGENTS.md, drop weak ones, keep at most 6 and 2,400 chars"]
+    NB --> D["Drop rules already in CLAUDE.md, drop weak ones, keep at most 6 and 2,400 chars"]
 
     SM -. "same prompt vector" .-> HS["Find up to 2 similar earlier prompts, bar 0.60 (free slots: exact rare words from graph.db)"]
     HS --> OUT
     D --> OUT{"Anything matched?"}
     OUT -- no --> E
     OUT -- yes --> A["Print additionalContext JSON: rules + related earlier prompts"]
-    A --> C["Codex receives the extra context with your prompt"]
+    A --> C["Claude sees the extra lines with your prompt"]
 
     SV --> RF["Start background refresh if notes or prompts lack meaning numbers (once per 2 min, model installed)"]
     RF --> V
@@ -142,7 +142,11 @@ flowchart TD
 - **Size:** `mk.db` is about 700 MB (the tech docs are 85,000 chunks with two sets of meaning numbers each). It is derived, not in git, and the mirror export skips it and `data/corpus/`.
 
 ## Testing the map (written-down questions)
-For a live Codex comparison on ESG questions, including debugging and programming, see [live-test.md](live-test.md). It records answer scores, token counts, the method and the limits of comparing all hooks on versus all hooks off.
+For a live Codex comparison on ten ESG questions, see [live-test.md](live-test.md). It records the questions, method, results and limits of comparing all hooks on versus all hooks off.
+
+On this machine, a Codex hook copies the whole brain folder to `source/repos/ai-on-prem-brain` in the background after a prompt and at session end. It includes prompt history, generated data and dependencies. Existing files that are replaced are first saved under `.claude/brain-export-backup`. The export log is `.claude/brain-export.log`. Files that exist only in the sharing folder are kept.
+
+At Codex session start, `.claude/scripts/sync-commands-to-codex.js` creates `claude-` prefixed skills for files in `.claude/commands`. Each skill reads its Claude command when used. Existing skills with other names are kept. Run the script with Node to sync without starting a session.
 
 The questions are data, not code: `eval-mk-cases.json` holds 538 questions (467 about Makillez and unrelated prompts, 71 for ESG, AIPO and the tech docs in set `proj1`, each with a `project` field), and `EVAL-MK.md` lists every one with its expected answer, its result and its top hit.
 - **What is in it:** 446 questions about Makillez and 21 unrelated ones that must stay quiet. The Makillez questions cover every technical doc (architecture, bounded contexts, events, authorization, gateway, frontend, deployment, workflow, bugs and findings, CI/CD, aipo, Azure search, filter panel, running locally and seeding, IHM, coding patterns, doc rules, diagrams, the plain-words docs) and 87 code symbols from the graph.
@@ -202,9 +206,12 @@ How to improve it without fooling yourself: write new questions first and keep o
 ## Cost
 About 0.5 s per prompt and 100 to 400 tokens when it adds rules. About 90 MB per machine. The model is in git; the packages are not (setup installs them). History search reads all meaning numbers: 0.37 s at 30,000 prompts. The exact-word lookup adds about 14 ms per prompt at 22,000 prompts (measured without the model, which dominates the real time).
 
-## Setup
+## Set up on a new machine
+After `git pull` of `claude-settings`, run `.\install.ps1`, or only the brain part:
 
-Keep the `ai-on-prem-brain` code folder in a shared checkout; setup stores each user's rules index, generated data, and prompt history under their own `.codex/brain`; source instructions stay in `.codex/AGENTS.md`. See [setup.md](setup.md) for installation and [workflows.md](workflows.md) for the end-to-end flow.
+    pwsh -File ~/.claude/brain/setup.ps1
+
+Needs node 20+, npm and internet. It installs packages, builds the graphs, runs the tests and checks the hook line in `settings.json`. Safe to run again; `-WhatIf` shows the steps. If npm 12 blocks the `onnxruntime-node` install script, run `npm install-scripts approve onnxruntime-node` here, then `setup.ps1` again (harmless on Windows; untested elsewhere).
 
 ## Day to day
 - Edit rules or notes: the graph rebuilds on the next prompt. New notes get meaning numbers within about two minutes.
@@ -220,7 +227,7 @@ Keep the `ai-on-prem-brain` code folder in a shared checkout; setup stores each 
 - Meaning is the weakest signal on short rules. It is tuned on about 40 prompts (`eval.js`).
 - On 50 fresh prompts the right rule was found 88% of the time, but unrelated prompts stayed quiet only 56% ("push-up" still pulls in a git rule), at 30 to 100 tokens each.
 - Known false hits: "session" pulls the Seq-key rule. Known miss: a prompt that never says "Codex" finds no Codex rule.
-- `AGENTS.md` still loads whole.
+- `CLAUDE.md` still loads whole.
 - History only knows what you typed; check old dated lines for law or news.
 
 ## Code graph (graphify)
