@@ -1,0 +1,8 @@
+{
+  "name": "claude-brain",
+  "private": true,
+  "description": "Brain graph: rules and memory as a graph, matched to each prompt by words, synonyms and meaning.",
+  "dependencies": {
+    "@huggingface/transformers": "4.3.2"
+  }
+}

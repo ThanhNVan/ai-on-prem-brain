@@ -1,0 +1,5411 @@
+[
+ {
+  "id": "ARCH-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "architecture",
+  "q": "what are the layers inside a bounded context",
+  "doc": "01-architecture",
+  "sec": "layering"
+ },
+ {
+  "id": "ARCH-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "which project holds the aggregates and domain events and what is it not allowed to depend on",
+  "doc": "01-architecture"
+ },
+ {
+  "id": "ARCH-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "what runs between the controller and the handler when I send a command",
+  "doc": "01-architecture",
+  "sec": "command lifecycle"
+ },
+ {
+  "id": "ARCH-04",
+  "set": "held",
+  "tier": "easy",
+  "area": "architecture",
+  "q": "how does the transactional outbox work",
+  "doc": "01-architecture|03-integration"
+ },
+ {
+  "id": "ARCH-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "why can a business rule rejection turn into a 500 error",
+  "doc": "01-architecture|24-coding",
+  "sec": "guard|validator|errors"
+ },
+ {
+  "id": "ARCH-06",
+  "set": "held",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "what happens to the outbox rows when a command fails halfway",
+  "doc": "01-architecture"
+ },
+ {
+  "id": "ARCH-07",
+  "set": "dev",
+  "tier": "hard",
+  "area": "architecture",
+  "q": "two commands run inside each other, do they share one database transaction",
+  "doc": "01-architecture"
+ },
+ {
+  "id": "ARCH-08",
+  "set": "held",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "how do services talk to each other synchronously",
+  "doc": "01-architecture|14-aipo|02-how-services"
+ },
+ {
+  "id": "ARCH-09",
+  "set": "dev",
+  "tier": "easy",
+  "area": "architecture",
+  "q": "what does the dapr sidecar do for each service",
+  "doc": "01-architecture"
+ },
+ {
+  "id": "ARCH-10",
+  "set": "held",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "where do I find the correlation id to trace a request",
+  "doc": "01-architecture|08-development"
+ },
+ {
+  "id": "ARCH-11",
+  "set": "dev",
+  "tier": "hard",
+  "area": "architecture",
+  "q": "which services share the shared kernel and what does it give them",
+  "doc": "01-architecture",
+  "sec": "shared kernel"
+ },
+ {
+  "id": "ARCH-12",
+  "set": "held",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "what base classes for aggregates and value objects does the shared kernel provide",
+  "doc": "01-architecture",
+  "code": "AggregateRoot|ValueObject|Enumeration",
+  "any": true
+ },
+ {
+  "id": "CTX-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "contexts",
+  "q": "which bounded context owns purchase order lines",
+  "doc": "02-bounded"
+ },
+ {
+  "id": "CTX-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "contexts",
+  "q": "where should a new feature about vessel zones live",
+  "doc": "02-bounded"
+ },
+ {
+  "id": "CTX-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "contexts",
+  "q": "what is the conversions service and how does it differ from the others",
+  "doc": "02-bounded|01-architecture"
+ },
+ {
+  "id": "CTX-04",
+  "set": "held",
+  "tier": "easy",
+  "area": "contexts",
+  "q": "what aggregates does supplier followup have",
+  "doc": "02-bounded",
+  "sec": "supplierfollowup|sfu"
+ },
+ {
+  "id": "CTX-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "contexts",
+  "q": "which service administers users roles and permissions",
+  "doc": "02-bounded|04-authorization"
+ },
+ {
+  "id": "CTX-06",
+  "set": "held",
+  "tier": "hard",
+  "area": "contexts",
+  "q": "I need a feature that touches company data in two services, which one is the source",
+  "doc": "02-bounded"
+ },
+ {
+  "id": "CTX-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "contexts",
+  "q": "what is the datamigrator tool for",
+  "doc": "02-bounded|RUNNING-LOCALLY|18-seeding"
+ },
+ {
+  "id": "CTX-08",
+  "set": "held",
+  "tier": "middle",
+  "area": "contexts",
+  "q": "how many aggregates commands and queries does vessels have",
+  "doc": "02-bounded|09-repo"
+ },
+ {
+  "id": "EVT-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "events",
+  "q": "which integration events are published and who subscribes to them",
+  "doc": "03-integration"
+ },
+ {
+  "id": "EVT-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "events",
+  "q": "how do I add a new integration event step by step",
+  "doc": "03-integration|08-development"
+ },
+ {
+  "id": "EVT-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "events",
+  "q": "my event never arrives at the other service where do I look",
+  "doc": "03-integration",
+  "sec": "missing event|debugging"
+ },
+ {
+  "id": "EVT-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "events",
+  "q": "an event handler ran twice and created duplicate rows",
+  "doc": "03-integration|08-development"
+ },
+ {
+  "id": "EVT-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "events",
+  "q": "which events have a publisher but no subscriber",
+  "doc": "03-integration|10-findings|README"
+ },
+ {
+  "id": "EVT-06",
+  "set": "held",
+  "tier": "easy",
+  "area": "events",
+  "q": "what is the topic attribute used for on the events controller",
+  "doc": "03-integration|08-development"
+ },
+ {
+  "id": "EVT-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "events",
+  "q": "how do policies react to domain events and build integration events",
+  "doc": "03-integration|01-architecture"
+ },
+ {
+  "id": "EVT-08",
+  "set": "held",
+  "tier": "hard",
+  "area": "events",
+  "q": "are there places that publish straight to dapr and skip the outbox",
+  "doc": "03-integration|10-findings|README"
+ },
+ {
+  "id": "EVT-09",
+  "set": "dev",
+  "tier": "middle",
+  "area": "events",
+  "q": "what message does vessels send to supplier followup to create a ticket",
+  "doc": "03-integration|10-findings|diagrams"
+ },
+ {
+  "id": "AUTH-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "authorization",
+  "q": "what are the audiences and which controller folder matches each",
+  "doc": "04-authorization",
+  "sec": "audience"
+ },
+ {
+  "id": "AUTH-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "a supplier gets 401 on every call what do I check first",
+  "doc": "04-authorization"
+ },
+ {
+  "id": "AUTH-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "how do I add a new permission so a role can hold it",
+  "doc": "04-authorization|08-development|24-coding"
+ },
+ {
+  "id": "AUTH-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "authorization",
+  "q": "can someone renumber the permission enum values",
+  "doc": "04-authorization|24-coding|08-development"
+ },
+ {
+  "id": "AUTH-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "where is the permission check enforced",
+  "doc": "04-authorization",
+  "sec": "enforced"
+ },
+ {
+  "id": "AUTH-06",
+  "set": "held",
+  "tier": "easy",
+  "area": "authorization",
+  "q": "how are azure ad tokens and b2c tokens told apart",
+  "doc": "04-authorization",
+  "sec": "scheme"
+ },
+ {
+  "id": "AUTH-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "a portal endpoint returns another customers vessels",
+  "doc": "04-authorization",
+  "sec": "scoping"
+ },
+ {
+  "id": "AUTH-08",
+  "set": "held",
+  "tier": "hard",
+  "area": "authorization",
+  "q": "the token is accepted but the action says unauthorized, how do I tell authentication from authorization",
+  "doc": "04-authorization",
+  "sec": "401"
+ },
+ {
+  "id": "AUTH-09",
+  "set": "dev",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "which environment variables configure the b2c login",
+  "doc": "04-authorization",
+  "sec": "configuration"
+ },
+ {
+  "id": "AUTH-10",
+  "set": "held",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "how many permissions exist per bounded context",
+  "doc": "04-authorization|09-repo"
+ },
+ {
+  "id": "GW-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "gateway",
+  "q": "how does a public url become a service call",
+  "doc": "05-gateway"
+ },
+ {
+  "id": "GW-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "gateway",
+  "q": "which local port does the vessels api use",
+  "doc": "05-gateway|RUNNING-LOCALLY"
+ },
+ {
+  "id": "GW-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "gateway",
+  "q": "a new portal endpoint returns 404 at the gateway before it reaches the service",
+  "doc": "05-gateway|08-development|04-authorization"
+ },
+ {
+  "id": "GW-04",
+  "set": "held",
+  "tier": "easy",
+  "area": "gateway",
+  "q": "where are the health check endpoints",
+  "doc": "05-gateway",
+  "sec": "health"
+ },
+ {
+  "id": "GW-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "gateway",
+  "q": "what are the deployed urls for staging and production",
+  "doc": "05-gateway|07-deployment"
+ },
+ {
+  "id": "GW-06",
+  "set": "held",
+  "tier": "hard",
+  "area": "gateway",
+  "q": "why does vessels use vess in the url instead of mz",
+  "doc": "05-gateway|04-authorization|README"
+ },
+ {
+  "id": "FE-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "frontend",
+  "q": "which angular apps exist and who uses them",
+  "doc": "06-frontend",
+  "sec": "front-end projects"
+ },
+ {
+  "id": "FE-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "frontend",
+  "q": "how do I regenerate the typescript api client after changing a controller",
+  "doc": "06-frontend|08-development|24-coding"
+ },
+ {
+  "id": "FE-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "frontend",
+  "q": "changes in common-lib are not visible in the apps",
+  "doc": "06-frontend|17-filter"
+ },
+ {
+  "id": "FE-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "frontend",
+  "q": "which feature areas does the supplier web app have",
+  "doc": "06-frontend"
+ },
+ {
+  "id": "FE-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "frontend",
+  "q": "what is the build order for the frontend projects",
+  "doc": "06-frontend",
+  "sec": "build order"
+ },
+ {
+  "id": "FE-06",
+  "set": "held",
+  "tier": "easy",
+  "area": "frontend",
+  "q": "where is the ihm report parts a to d code in the frontend",
+  "doc": "06-frontend|ONBOARDING-IHM"
+ },
+ {
+  "id": "FE-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "frontend",
+  "q": "how does the single page app learn the api gateway url at runtime",
+  "doc": "06-frontend",
+  "sec": "configuration"
+ },
+ {
+  "id": "FE-08",
+  "set": "held",
+  "tier": "hard",
+  "area": "frontend",
+  "q": "which angular version is used and is zone js still switched on",
+  "doc": "06-frontend"
+ },
+ {
+  "id": "DEP-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "deployment",
+  "q": "which environments exist",
+  "doc": "07-deployment",
+  "sec": "environments"
+ },
+ {
+  "id": "DEP-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "deployment",
+  "q": "do all services share one database in production",
+  "doc": "07-deployment|01-architecture"
+ },
+ {
+  "id": "DEP-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "deployment",
+  "q": "what should I check before and after a deploy",
+  "doc": "07-deployment",
+  "sec": "checklist"
+ },
+ {
+  "id": "DEP-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "deployment",
+  "q": "a deploy half succeeded what now",
+  "doc": "07-deployment",
+  "sec": "half"
+ },
+ {
+  "id": "DEP-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "deployment",
+  "q": "where do the kubernetes manifests live",
+  "doc": "07-deployment",
+  "sec": "k8s|pipelines"
+ },
+ {
+  "id": "DEP-06",
+  "set": "held",
+  "tier": "easy",
+  "area": "deployment",
+  "q": "how is configuration provided to the services",
+  "doc": "07-deployment",
+  "sec": "configuration"
+ },
+ {
+  "id": "DEP-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "deployment",
+  "q": "which pipelines run for a release branch",
+  "doc": "07-deployment|13-cicd"
+ },
+ {
+  "id": "WF-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "workflow",
+  "q": "how do I add a command",
+  "doc": "08-development|24-coding",
+  "sec": "add a command|commands"
+ },
+ {
+  "id": "WF-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "workflow",
+  "q": "steps to add a query with paging",
+  "doc": "08-development",
+  "sec": "add a query"
+ },
+ {
+  "id": "WF-03",
+  "set": "dev",
+  "tier": "easy",
+  "area": "workflow",
+  "q": "how do I create an ef migration",
+  "doc": "08-development",
+  "sec": "migration"
+ },
+ {
+  "id": "WF-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "workflow",
+  "q": "the deploy was green but the column does not exist at runtime",
+  "doc": "08-development|24-coding",
+  "sec": "migration|two commands|database"
+ },
+ {
+  "id": "WF-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "workflow",
+  "q": "what does the definition of done require",
+  "doc": "08-development|24-coding",
+  "sec": "definition of done|before you ask"
+ },
+ {
+  "id": "WF-06",
+  "set": "held",
+  "tier": "middle",
+  "area": "workflow",
+  "q": "how do I add a new audience endpoint like a portal api",
+  "doc": "08-development",
+  "sec": "audience"
+ },
+ {
+  "id": "WF-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "workflow",
+  "q": "what unit tests exist today and where could I add some",
+  "doc": "08-development",
+  "sec": "testing"
+ },
+ {
+  "id": "WF-08",
+  "set": "held",
+  "tier": "hard",
+  "area": "workflow",
+  "q": "which conventions must I not break when writing handlers",
+  "doc": "08-development|24-coding",
+  "sec": "conventions|commands"
+ },
+ {
+  "id": "WF-09",
+  "set": "dev",
+  "tier": "middle",
+  "area": "workflow",
+  "q": "how do I trace a failed request in seq",
+  "doc": "08-development|01-architecture",
+  "sec": "debugging|observability"
+ },
+ {
+  "id": "WF-10",
+  "set": "held",
+  "tier": "hard",
+  "area": "workflow",
+  "q": "the frontend cannot call the new endpoint even though it exists",
+  "doc": "08-development|06-frontend|24-coding"
+ },
+ {
+  "id": "BUG-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "findings",
+  "q": "which known bugs are still unfixed",
+  "doc": "19-known"
+ },
+ {
+  "id": "BUG-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "findings",
+  "q": "are there events with no subscriber",
+  "doc": "10-findings|03-integration"
+ },
+ {
+  "id": "BUG-03",
+  "set": "dev",
+  "tier": "hard",
+  "area": "findings",
+  "q": "does the ihm log entry update ignore failed results",
+  "doc": "19-known",
+  "sec": "U33|ignores failed"
+ },
+ {
+  "id": "BUG-04",
+  "set": "held",
+  "tier": "middle",
+  "area": "findings",
+  "q": "what performance problems are known at scale",
+  "doc": "19-known|20-improvement",
+  "sec": "P3|performance|backend"
+ },
+ {
+  "id": "BUG-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "findings",
+  "q": "where do the docs and the code disagree",
+  "doc": "10-findings|19-known",
+  "sec": "drift"
+ },
+ {
+  "id": "BUG-06",
+  "set": "held",
+  "tier": "hard",
+  "area": "findings",
+  "q": "what parts of the codebase are in good shape",
+  "doc": "10-findings",
+  "sec": "good shape"
+ },
+ {
+  "id": "BUG-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "findings",
+  "q": "which improvements are suggested for security and permissions",
+  "doc": "20-improvement",
+  "sec": "security"
+ },
+ {
+  "id": "BUG-08",
+  "set": "held",
+  "tier": "middle",
+  "area": "findings",
+  "q": "in what order should the findings be fixed",
+  "doc": "10-findings|19-known|20-improvement",
+  "sec": "order|first picks"
+ },
+ {
+  "id": "CI-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "cicd",
+  "q": "how does the branch to pipeline mapping work",
+  "doc": "13-cicd"
+ },
+ {
+  "id": "CI-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "cicd",
+  "q": "what does each pipeline stage actually run",
+  "doc": "13-cicd",
+  "sec": "stage"
+ },
+ {
+  "id": "CI-03",
+  "set": "dev",
+  "tier": "hard",
+  "area": "cicd",
+  "q": "where do the documented release process and the real pipelines disagree",
+  "doc": "13-cicd",
+  "sec": "disagree"
+ },
+ {
+  "id": "CI-04",
+  "set": "held",
+  "tier": "middle",
+  "area": "cicd",
+  "q": "which release branch name triggers the staging pipeline",
+  "doc": "13-cicd|07-deployment"
+ },
+ {
+  "id": "CI-05",
+  "set": "dev",
+  "tier": "easy",
+  "area": "cicd",
+  "q": "how should I name a release branch",
+  "doc": "13-cicd"
+ },
+ {
+  "id": "AIPO-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "aipo",
+  "q": "what is the aipo integration",
+  "doc": "14-aipo"
+ },
+ {
+  "id": "AIPO-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "aipo",
+  "q": "how does a purchase order line get reviewed by the machine learning service",
+  "doc": "14-aipo",
+  "sec": "flow"
+ },
+ {
+  "id": "AIPO-03",
+  "set": "dev",
+  "tier": "hard",
+  "area": "aipo",
+  "q": "what gotchas should I know before touching the aipo path",
+  "doc": "14-aipo",
+  "sec": "gotchas"
+ },
+ {
+  "id": "AIPO-04",
+  "set": "held",
+  "tier": "middle",
+  "area": "aipo",
+  "q": "how do I test the aipo endpoint on the dev cluster with postman",
+  "doc": "15-testing-aipo"
+ },
+ {
+  "id": "AIPO-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "aipo",
+  "q": "open the tunnel to the dev cluster for aipo",
+  "doc": "15-testing-aipo",
+  "sec": "tunnel"
+ },
+ {
+  "id": "AIPO-06",
+  "set": "held",
+  "tier": "hard",
+  "area": "aipo",
+  "q": "the aipo call fails where do I look",
+  "doc": "14-aipo",
+  "sec": "breaks|where to look"
+ },
+ {
+  "id": "SRCH-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "search",
+  "q": "how does po review search use azure ai search",
+  "doc": "16-azure"
+ },
+ {
+  "id": "SRCH-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "search",
+  "q": "what happens when azure search is not configured",
+  "doc": "16-azure",
+  "sec": "flow|fail-soft|provisioning"
+ },
+ {
+  "id": "SRCH-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "search",
+  "q": "which configuration keys does the search need",
+  "doc": "16-azure",
+  "sec": "configuration"
+ },
+ {
+  "id": "SRCH-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "search",
+  "q": "the free tier storage quota problem",
+  "doc": "16-azure",
+  "sec": "free-tier"
+ },
+ {
+  "id": "SRCH-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "search",
+  "q": "does the index provisioner create the index on startup",
+  "doc": "16-azure",
+  "sec": "provision"
+ },
+ {
+  "id": "SRCH-06",
+  "set": "held",
+  "tier": "middle",
+  "area": "search",
+  "q": "how are purchase order lines pushed to the search index after a command",
+  "doc": "16-azure|01-architecture",
+  "code": "PoReviewSearchSyncBehavior",
+  "any": true
+ },
+ {
+  "id": "FP-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "filter-panel",
+  "q": "what colours do filter chips get",
+  "doc": "17-filter",
+  "sec": "FP-1"
+ },
+ {
+  "id": "FP-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "filter-panel",
+  "q": "why does the list load twice on the first visit",
+  "doc": "17-filter",
+  "sec": "FP-4"
+ },
+ {
+  "id": "FP-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "filter-panel",
+  "q": "the dropdown shows no loading state",
+  "doc": "17-filter",
+  "sec": "FP-5"
+ },
+ {
+  "id": "FP-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "filter-panel",
+  "q": "older list responses overwrite newer ones",
+  "doc": "17-filter",
+  "sec": "FP-9"
+ },
+ {
+  "id": "FP-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "filter-panel",
+  "q": "how should the selected filter count be shown on the button",
+  "doc": "17-filter",
+  "sec": "FP-10"
+ },
+ {
+  "id": "FP-06",
+  "set": "held",
+  "tier": "easy",
+  "area": "filter-panel",
+  "q": "where should clear all sit in the chip row",
+  "doc": "17-filter",
+  "sec": "FP-2"
+ },
+ {
+  "id": "RUN-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "running-locally",
+  "q": "how do I seed local test data into the database",
+  "doc": "18-seeding|RUNNING-LOCALLY"
+ },
+ {
+  "id": "RUN-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "running-locally",
+  "q": "how do I connect to the local sql server container from the host",
+  "doc": "18-seeding|RUNNING-LOCALLY"
+ },
+ {
+  "id": "RUN-03",
+  "set": "dev",
+  "tier": "easy",
+  "area": "running-locally",
+  "q": "what do I need installed to run the stack locally",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "prerequisites"
+ },
+ {
+  "id": "RUN-04",
+  "set": "held",
+  "tier": "middle",
+  "area": "running-locally",
+  "q": "where do I get the pintura token",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "pintura"
+ },
+ {
+  "id": "RUN-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "running-locally",
+  "q": "can I run only the frontend without docker",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "lighter"
+ },
+ {
+  "id": "RUN-06",
+  "set": "held",
+  "tier": "hard",
+  "area": "running-locally",
+  "q": "all the screens are empty on a fresh local stack",
+  "doc": "RUNNING-LOCALLY|08-development",
+  "sec": "sample data|running the platform"
+ },
+ {
+  "id": "RUN-07",
+  "set": "dev",
+  "tier": "middle",
+  "area": "running-locally",
+  "q": "what sample data ships with the local database",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "sample data"
+ },
+ {
+  "id": "RUN-08",
+  "set": "held",
+  "tier": "middle",
+  "area": "running-locally",
+  "q": "what should I check first when local startup fails",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "first stop|wrong"
+ },
+ {
+  "id": "IHM-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "ihm",
+  "q": "what is ihm in this platform",
+  "doc": "ONBOARDING-IHM|GLOSSARY",
+  "sec": "one thing"
+ },
+ {
+  "id": "IHM-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "ihm",
+  "q": "where does the ihm code live",
+  "doc": "ONBOARDING-IHM",
+  "sec": "where the ihm code lives"
+ },
+ {
+  "id": "IHM-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "ihm",
+  "q": "what do I need running to work on ihm",
+  "doc": "ONBOARDING-IHM",
+  "sec": "run plan"
+ },
+ {
+  "id": "IHM-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "ihm",
+  "q": "what is a good first change to make end to end in ihm",
+  "doc": "ONBOARDING-IHM",
+  "sec": "first change"
+ },
+ {
+  "id": "IHM-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "ihm",
+  "q": "which service owns the ihm report pdf",
+  "doc": "ONBOARDING-IHM|06-frontend|02-bounded",
+  "code": "IhmPdfGenerator",
+  "any": true
+ },
+ {
+  "id": "PAT-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "patterns",
+  "q": "how does the scoped list flow work",
+  "doc": "23-scoped"
+ },
+ {
+  "id": "PAT-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "patterns",
+  "q": "how do I show only one companys vessels without hardcoding it in the backend",
+  "doc": "23-scoped|24-coding"
+ },
+ {
+  "id": "PAT-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "patterns",
+  "q": "rules for encoding ids in the api",
+  "doc": "24-coding",
+  "sec": "ids and filters"
+ },
+ {
+  "id": "PAT-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "patterns",
+  "q": "do I need a wrapper dto for a single value in a command",
+  "doc": "24-coding|23-scoped",
+  "sec": "ids|commands|rules"
+ },
+ {
+  "id": "PAT-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "patterns",
+  "q": "what must I check before asking for review",
+  "doc": "24-coding",
+  "sec": "before you ask"
+ },
+ {
+  "id": "PAT-06",
+  "set": "held",
+  "tier": "middle",
+  "area": "patterns",
+  "q": "partial controller layout with queries and commands folders",
+  "doc": "24-coding|23-scoped",
+  "sec": "controllers"
+ },
+ {
+  "id": "DOC-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "doc-rules",
+  "q": "rules for mermaid diagrams",
+  "doc": "21-mermaid"
+ },
+ {
+  "id": "DOC-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "doc-rules",
+  "q": "what does the docs checker enforce",
+  "doc": "22-markdown",
+  "sec": "checker"
+ },
+ {
+  "id": "DOC-03",
+  "set": "dev",
+  "tier": "middle",
+  "area": "doc-rules",
+  "q": "how should markdown headings be written in these docs",
+  "doc": "22-markdown",
+  "sec": "rules"
+ },
+ {
+  "id": "DOC-04",
+  "set": "held",
+  "tier": "hard",
+  "area": "doc-rules",
+  "q": "is there a line length limit for the docs",
+  "doc": "22-markdown"
+ },
+ {
+  "id": "NON-01",
+  "set": "dev",
+  "tier": "middle",
+  "area": "non-dev",
+  "q": "explain in simple words how the services talk to each other",
+  "doc": "for-non-dev/02|01-architecture|03-integration"
+ },
+ {
+  "id": "NON-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "non-dev",
+  "q": "who can sign in to the platform in plain words",
+  "doc": "for-non-dev/03|04-authorization"
+ },
+ {
+  "id": "NON-03",
+  "set": "dev",
+  "tier": "easy",
+  "area": "non-dev",
+  "q": "known gaps in plain words",
+  "doc": "for-non-dev/06|10-findings|19-known"
+ },
+ {
+  "id": "CODE-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "code",
+  "q": "where is IdsConverter defined",
+  "code": "^IdsConverter$"
+ },
+ {
+  "id": "CODE-02",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "what does CommandTransactionBehavior do",
+  "code": "CommandTransactionBehavior",
+  "doc": "01-architecture",
+  "any": true
+ },
+ {
+  "id": "CODE-03",
+  "set": "dev",
+  "tier": "easy",
+  "area": "code",
+  "q": "show me the ApiControllerBase",
+  "code": "ApiControllerBase"
+ },
+ {
+  "id": "CODE-04",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "which class turns a fluent result into an http response",
+  "code": "FluentResultMapper|ApiControllerBase"
+ },
+ {
+  "id": "CODE-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "code",
+  "q": "where are the outbox messages processed in the background",
+  "code": "OutboxProcessor",
+  "doc": "01-architecture|03-integration",
+  "any": true
+ },
+ {
+  "id": "CODE-06",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "which class checks the required permission on commands",
+  "code": "CommandsAndQueriesAuthorizationBehavior|AuthorizationService|RequiredPermission"
+ },
+ {
+  "id": "CODE-07",
+  "set": "dev",
+  "tier": "easy",
+  "area": "code",
+  "q": "the ticket aggregate",
+  "code": "^Ticket$"
+ },
+ {
+  "id": "CODE-08",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "where is the ihm pdf generated",
+  "code": "IhmPdfGenerator"
+ },
+ {
+  "id": "CODE-09",
+  "set": "dev",
+  "tier": "middle",
+  "area": "code",
+  "q": "how does po review search sync to azure after a command",
+  "code": "PoReviewSearchSyncBehavior|PoReviewSearchAdapter"
+ },
+ {
+  "id": "CODE-10",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "base class for aggregates",
+  "code": "AggregateRoot"
+ },
+ {
+  "id": "CODE-11",
+  "set": "dev",
+  "tier": "hard",
+  "area": "code",
+  "q": "where do we guard against impossible values with a throw",
+  "code": "^Guard$",
+  "doc": "01-architecture",
+  "any": true
+ },
+ {
+  "id": "CODE-12",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "where does the validation helper for expected failures live",
+  "code": "^Validator$",
+  "doc": "01-architecture",
+  "any": true
+ },
+ {
+  "id": "CODE-13",
+  "set": "dev",
+  "tier": "middle",
+  "area": "code",
+  "q": "how does vessels call the conversions service",
+  "code": "ConversionApiClient",
+  "doc": "01-architecture|02-bounded",
+  "any": true
+ },
+ {
+  "id": "CODE-14",
+  "set": "held",
+  "tier": "hard",
+  "area": "code",
+  "q": "which class holds the paged result sent to the client",
+  "code": "PagedCollection"
+ },
+ {
+  "id": "CODE-15",
+  "set": "dev",
+  "tier": "easy",
+  "area": "code",
+  "q": "NotFoundError",
+  "code": "NotFoundError"
+ },
+ {
+  "id": "CODE-16",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "the purchase order line aggregate",
+  "code": "PurchaseOrderLine"
+ },
+ {
+  "id": "CODE-17",
+  "set": "dev",
+  "tier": "middle",
+  "area": "code",
+  "q": "where is customer access to a vessel granted",
+  "code": "CustomerVesselAccess"
+ },
+ {
+  "id": "CODE-18",
+  "set": "held",
+  "tier": "hard",
+  "area": "code",
+  "q": "where is the data migrator dev data controller",
+  "code": "DevDataController|DataMigrator"
+ },
+ {
+  "id": "CODE-19",
+  "set": "dev",
+  "tier": "middle",
+  "area": "code",
+  "q": "the entity that logs ihm changes for a vessel",
+  "code": "IHMEventLogEntry"
+ },
+ {
+  "id": "CODE-20",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "where is blob storage abstracted",
+  "code": "IBlobStorage|BlobStorage"
+ },
+ {
+  "id": "CODE-21",
+  "set": "dev",
+  "tier": "middle",
+  "area": "code",
+  "q": "base class for repositories",
+  "code": "RepositoryBase"
+ },
+ {
+  "id": "CODE-22",
+  "set": "held",
+  "tier": "hard",
+  "area": "code",
+  "q": "the class that builds integration events in vessels",
+  "code": "IntegrationEventsFactory"
+ },
+ {
+  "id": "CODE-23",
+  "set": "dev",
+  "tier": "middle",
+  "area": "code",
+  "q": "what is the b2c account manager",
+  "code": "B2CAccount"
+ },
+ {
+  "id": "CODE-24",
+  "set": "held",
+  "tier": "middle",
+  "area": "code",
+  "q": "which class sends emails",
+  "code": "EmailSender"
+ },
+ {
+  "id": "NEG-01",
+  "set": "dev",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "what is the capital of France",
+  "none": true
+ },
+ {
+  "id": "NEG-02",
+  "set": "held",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "can you recommend a good movie for tonight",
+  "none": true
+ },
+ {
+  "id": "NEG-03",
+  "set": "dev",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "whats a good pasta recipe for tonight",
+  "none": true
+ },
+ {
+  "id": "NEG-04",
+  "set": "held",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "write me a poem about the sea",
+  "none": true
+ },
+ {
+  "id": "NEG-05",
+  "set": "dev",
+  "tier": "middle",
+  "area": "unrelated",
+  "q": "the session at the conference starts at nine tomorrow",
+  "none": true
+ },
+ {
+  "id": "NEG-06",
+  "set": "held",
+  "tier": "middle",
+  "area": "unrelated",
+  "q": "do your push-up exercises every morning please",
+  "none": true
+ },
+ {
+  "id": "NEG-07",
+  "set": "dev",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "translate this sentence into spanish for my friend",
+  "none": true
+ },
+ {
+  "id": "NEG-08",
+  "set": "held",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how tall is the highest mountain on earth",
+  "none": true
+ },
+ {
+  "id": "NEG-09",
+  "set": "dev",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "what is the weather like in oslo this week",
+  "none": true
+ },
+ {
+  "id": "NEG-10",
+  "set": "held",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "explain how photosynthesis works in simple terms",
+  "none": true
+ },
+ {
+  "id": "NEG-11",
+  "set": "dev",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "give me a four week beginner running plan",
+  "none": true,
+  "known": true,
+  "why": "shares the words running and plan with the doc section The run plan; a near miss, not a bug"
+ },
+ {
+  "id": "NEG-12",
+  "set": "held",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "write a short birthday message for my sister",
+  "none": true
+ },
+ {
+  "id": "ARCH-13",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "what does a bounded context contain besides the domain project",
+  "doc": "01-architecture",
+  "sec": "layering"
+ },
+ {
+  "id": "ARCH-14",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "architecture",
+  "q": "explain the difference between guard and validator",
+  "doc": "01-architecture|24-coding",
+  "sec": "guard|validator|errors"
+ },
+ {
+  "id": "ARCH-15",
+  "set": "fresh",
+  "tier": "hard",
+  "area": "architecture",
+  "q": "why are outbox events published only every few seconds",
+  "doc": "01-architecture|03-integration|10-findings"
+ },
+ {
+  "id": "CTX-09",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "contexts",
+  "q": "what are the six bounded contexts of the platform",
+  "doc": "02-bounded|README|01-architecture"
+ },
+ {
+  "id": "CTX-10",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "contexts",
+  "q": "who owns the component and zone aggregates",
+  "doc": "02-bounded",
+  "sec": "vessels"
+ },
+ {
+  "id": "EVT-10",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "events",
+  "q": "how do supplier followup and vessels exchange data",
+  "doc": "03-integration|02-bounded|diagrams"
+ },
+ {
+  "id": "EVT-11",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "events",
+  "q": "what happens on the consumer side when an integration event arrives",
+  "doc": "03-integration",
+  "sec": "consumer"
+ },
+ {
+  "id": "AUTH-11",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "who may call the gateway api and the application api",
+  "doc": "04-authorization",
+  "sec": "audience"
+ },
+ {
+  "id": "AUTH-12",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "authorization",
+  "q": "what does the b2c authorize attribute look like on a controller",
+  "doc": "04-authorization|24-coding"
+ },
+ {
+  "id": "AUTH-13",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "what is the naming scheme for permissions",
+  "doc": "04-authorization|24-coding",
+  "sec": "catalog|commands|numbering"
+ },
+ {
+  "id": "AUTH-14",
+  "set": "fresh",
+  "tier": "hard",
+  "area": "authorization",
+  "q": "which database tables hold user roles in each service",
+  "doc": "04-authorization",
+  "sec": "enforced"
+ },
+ {
+  "id": "AUTH-15",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "authorization",
+  "q": "how is data scoped for suppliers so they only see their own tickets",
+  "doc": "04-authorization",
+  "sec": "scoping"
+ },
+ {
+  "id": "GW-07",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "gateway",
+  "q": "how do envoy routes map to services",
+  "doc": "05-gateway"
+ },
+ {
+  "id": "FE-09",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "frontend",
+  "q": "which port does the webapp dev server run on",
+  "doc": "06-frontend|RUNNING-LOCALLY"
+ },
+ {
+  "id": "FE-10",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "frontend",
+  "q": "where are the nswag configuration files stored",
+  "doc": "06-frontend|08-development"
+ },
+ {
+  "id": "FE-11",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "frontend",
+  "q": "what changes in the frontend when I rename a controller action",
+  "doc": "06-frontend|08-development|24-coding"
+ },
+ {
+  "id": "DEP-08",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "deployment",
+  "q": "what are the stages of the staging pipeline",
+  "doc": "07-deployment|13-cicd"
+ },
+ {
+  "id": "WF-11",
+  "set": "fresh",
+  "tier": "hard",
+  "area": "workflow",
+  "q": "how is the migration script applied by the pipeline",
+  "doc": "08-development|07-deployment|13-cicd",
+  "sec": "migration|pipeline|two commands|stage"
+ },
+ {
+  "id": "WF-12",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "workflow",
+  "q": "how do I find the failing command in seq",
+  "doc": "08-development|01-architecture",
+  "sec": "debugging|observability"
+ },
+ {
+  "id": "BUG-09",
+  "set": "fresh",
+  "tier": "hard",
+  "area": "findings",
+  "q": "is the outbox a bottleneck at high volume",
+  "doc": "10-findings|19-known|20-improvement",
+  "sec": "outbox|P3|events"
+ },
+ {
+  "id": "BUG-10",
+  "set": "fresh",
+  "tier": "hard",
+  "area": "findings",
+  "q": "what is the most serious category of unfixed bugs",
+  "doc": "19-known",
+  "sec": "P1|wrong data"
+ },
+ {
+  "id": "SRCH-07",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "search",
+  "q": "how do I debug a problem where the search index is out of sync with the database",
+  "doc": "16-azure|10-findings",
+  "sec": "flow|pieces|sync|open items"
+ },
+ {
+  "id": "FP-07",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "filter-panel",
+  "q": "how should the clear all button behave in the chip row",
+  "doc": "17-filter",
+  "sec": "FP-2"
+ },
+ {
+  "id": "RUN-09",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "running-locally",
+  "q": "which tables does the po review ai tab seed need",
+  "doc": "18-seeding",
+  "sec": "worked example"
+ },
+ {
+  "id": "RUN-10",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "running-locally",
+  "q": "how do I install what the repo needs on a new machine",
+  "doc": "RUNNING-LOCALLY|ONBOARDING-IHM",
+  "sec": "prerequisites|day 1"
+ },
+ {
+  "id": "PAT-07",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "patterns",
+  "q": "where does the class company filter get decoded",
+  "doc": "23-scoped|24-coding",
+  "sec": "worked example|ids"
+ },
+ {
+  "id": "PAT-08",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "patterns",
+  "q": "when must a controller carry the b2c attribute",
+  "doc": "04-authorization|24-coding",
+  "sec": "scheme|controllers|attribute"
+ },
+ {
+  "id": "PAT-09",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "patterns",
+  "q": "what does the ihm event task list screen show",
+  "doc": "23-scoped",
+  "sec": "worked example"
+ },
+ {
+  "id": "DOC-05",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "doc-rules",
+  "q": "how should node labels be written in a mermaid flowchart",
+  "doc": "21-mermaid",
+  "sec": "names|rules"
+ },
+ {
+  "id": "CODE-25",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "code",
+  "q": "the vessel aggregate",
+  "code": "^Vessel$"
+ },
+ {
+  "id": "CODE-26",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "code",
+  "q": "where is DryDock handled",
+  "code": "DryDock"
+ },
+ {
+  "id": "CODE-27",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "code",
+  "q": "sql implementation of the ticket queries",
+  "code": "TicketQueries"
+ },
+ {
+  "id": "CODE-28",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "code",
+  "q": "the value object base class",
+  "code": "ValueObject"
+ },
+ {
+  "id": "CODE-29",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "code",
+  "q": "the table that stores outbox messages",
+  "code": "OutboxMessage"
+ },
+ {
+  "id": "CODE-30",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "code",
+  "q": "which service checks whether a user has a permission",
+  "code": "AuthorizationService|UserQueries"
+ },
+ {
+  "id": "NEG-13",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how do I make a good cup of coffee at home",
+  "none": true
+ },
+ {
+  "id": "NEG-14",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "what is the speed of light in a vacuum",
+  "none": true
+ },
+ {
+  "id": "NEG-15",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "recommend me a book about space exploration",
+  "none": true
+ },
+ {
+  "id": "NEG-16",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how many days are in a leap year",
+  "none": true
+ },
+ {
+  "id": "NEG-17",
+  "set": "fresh",
+  "tier": "middle",
+  "area": "unrelated",
+  "q": "tips for a job interview next week",
+  "none": true
+ },
+ {
+  "id": "NEG-18",
+  "set": "fresh",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how do i tie a tie for a wedding",
+  "none": true
+ },
+ {
+  "id": "ARCH-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "why can an event never be published for a change that was rolled back",
+  "doc": "01-architecture",
+  "sec": "outbox|transaction"
+ },
+ {
+  "id": "ARCH-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what is the difference between Guard and Validator",
+  "doc": "01-architecture|24-coding",
+  "sec": "Guard|Validator|error"
+ },
+ {
+  "id": "ARCH-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what happens step by step when a command is sent",
+  "doc": "01-architecture",
+  "sec": "command lifecycle"
+ },
+ {
+  "id": "ARCH-34",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what does the shared kernel hold",
+  "doc": "01-architecture",
+  "sec": "shared kernel"
+ },
+ {
+  "id": "CTX-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "where should a feature about flag states live",
+  "doc": "02-bounded",
+  "sec": "Decision aid|Settings|catalog"
+ },
+ {
+  "id": "CTX-32",
+  "set": "train2",
+  "tier": "easy",
+  "q": "which tool is not a bounded context",
+  "doc": "02-bounded",
+  "sec": "DataMigrator"
+ },
+ {
+  "id": "CTX-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what does the conversions service own",
+  "doc": "02-bounded",
+  "sec": "Conversions|catalog"
+ },
+ {
+  "id": "EVT-31",
+  "set": "train2",
+  "tier": "easy",
+  "q": "how do I add a new integration event",
+  "doc": "03-integration|08-development",
+  "sec": "Adding|Rules|Add an integration"
+ },
+ {
+  "id": "EVT-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which rows of the event matrix are master data copies",
+  "doc": "03-integration",
+  "sec": "matrix|Master-data|Two kinds"
+ },
+ {
+  "id": "AUTH-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which authentication scheme gets picked for a controller",
+  "doc": "04-authorization",
+  "sec": "Scheme selection|attribute rule"
+ },
+ {
+  "id": "AUTH-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how are permission numbers handed out",
+  "doc": "04-authorization",
+  "sec": "numbering|catalog"
+ },
+ {
+  "id": "AUTH-33",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what are the rules for adding a permission",
+  "doc": "04-authorization|24-coding",
+  "sec": "Rules for adding|permission"
+ },
+ {
+  "id": "AUTH-34",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which configuration does authentication need",
+  "doc": "04-authorization",
+  "sec": "Configuration"
+ },
+ {
+  "id": "GW-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "on which port does the gateway listen on my machine",
+  "doc": "05-gateway|RUNNING-LOCALLY",
+  "sec": "Local ports|ports"
+ },
+ {
+  "id": "GW-32",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what are the deployed urls of the gateway",
+  "doc": "05-gateway",
+  "sec": "Deployed URLs"
+ },
+ {
+  "id": "GW-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how does the gateway report that a service is healthy",
+  "doc": "05-gateway",
+  "sec": "Health checks"
+ },
+ {
+  "id": "FE-31",
+  "set": "train2",
+  "tier": "easy",
+  "q": "how do I regenerate the angular api clients",
+  "doc": "06-frontend|08-development",
+  "sec": "Regenerat"
+ },
+ {
+  "id": "FE-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "in which order do the front end projects have to be built",
+  "doc": "06-frontend|RUNNING-LOCALLY",
+  "sec": "Build order|happy path|Dev servers"
+ },
+ {
+  "id": "FE-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which feature areas does the back office app have",
+  "doc": "06-frontend",
+  "sec": "Feature areas|WebApp"
+ },
+ {
+  "id": "DEP-31",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what do the environment names stand for",
+  "doc": "07-deployment|for-non-dev/04",
+  "sec": "Environments|releases"
+ },
+ {
+  "id": "DEP-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which configuration switches change how a service behaves",
+  "doc": "07-deployment",
+  "sec": "switches|Configuration model"
+ },
+ {
+  "id": "DEP-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what do I do when a deploy only half works",
+  "doc": "07-deployment",
+  "sec": "half-succeeds"
+ },
+ {
+  "id": "DEP-34",
+  "set": "train2",
+  "tier": "hard",
+  "q": "do the services really have a database each",
+  "doc": "07-deployment|10-findings",
+  "sec": "Database topology|C4"
+ },
+ {
+  "id": "WF-31",
+  "set": "train2",
+  "tier": "easy",
+  "q": "how do I add an ef migration",
+  "doc": "08-development|24-coding",
+  "sec": "migration"
+ },
+ {
+  "id": "WF-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how can I follow one request from the browser to the database",
+  "doc": "08-development",
+  "sec": "Trace a request|Debugging"
+ },
+ {
+  "id": "WF-33",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what does done mean for a change",
+  "doc": "08-development",
+  "sec": "Definition of done"
+ },
+ {
+  "id": "WF-34",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what is the current state of automated tests",
+  "doc": "08-development|10-findings|20-improvement",
+  "sec": "Testing|A3|Tests"
+ },
+ {
+  "id": "BUG-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which integration events does nobody listen to",
+  "doc": "10-findings|03-integration",
+  "sec": "A1|consumer|no consumer"
+ },
+ {
+  "id": "BUG-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what goes wrong when a vessel is purged",
+  "doc": "10-findings|19-known",
+  "sec": "A9|U45"
+ },
+ {
+  "id": "BUG-33",
+  "set": "train2",
+  "tier": "easy",
+  "q": "which unfixed bugs lose or corrupt data",
+  "doc": "19-known",
+  "sec": "P1"
+ },
+ {
+  "id": "BUG-34",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what should we improve first",
+  "doc": "20-improvement|10-findings",
+  "sec": "first picks|Suggested order"
+ },
+ {
+  "id": "CI-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which branch starts which pipeline",
+  "doc": "13-cicd",
+  "sec": "Branch"
+ },
+ {
+  "id": "CI-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how does a release go out",
+  "doc": "13-cicd|07-deployment",
+  "sec": "Release workflow|Pipelines"
+ },
+ {
+  "id": "AIPO-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how do I open the tunnel to test aipo on dev",
+  "doc": "15-testing-aipo",
+  "sec": "tunnel"
+ },
+ {
+  "id": "AIPO-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what does the aipo review return for a line",
+  "doc": "14-aipo|15-testing-aipo",
+  "sec": "flow|Expected response|End-to-end"
+ },
+ {
+  "id": "SRCH-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "why can the search setup be run twice without harm",
+  "doc": "16-azure-ai-search",
+  "sec": "idempotent|Provisioning"
+ },
+ {
+  "id": "SRCH-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what is the problem with the free tier of search",
+  "doc": "16-azure-ai-search|10-findings",
+  "sec": "Known gap|D4"
+ },
+ {
+  "id": "FP-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how should the loading spinner behave on a filtered list",
+  "doc": "17-filter-panel",
+  "sec": "FP-3"
+ },
+ {
+  "id": "FP-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how many http calls may a filter page make on first load",
+  "doc": "17-filter-panel",
+  "sec": "FP-4"
+ },
+ {
+  "id": "FP-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "where do we show how many filters are selected",
+  "doc": "17-filter-panel",
+  "sec": "FP-10"
+ },
+ {
+  "id": "RUN-31",
+  "set": "train2",
+  "tier": "easy",
+  "q": "how do I put my own test data into the local database",
+  "doc": "18-seeding|RUNNING-LOCALLY",
+  "sec": "Seeding|Sample data|Getting it in|Choose"
+ },
+ {
+  "id": "RUN-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what can go wrong when seeding test data",
+  "doc": "18-seeding|RUNNING-LOCALLY",
+  "sec": "Gotchas|Rules that|Sample data"
+ },
+ {
+  "id": "IHM-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "who owns which part of ihm",
+  "doc": "ONBOARDING-IHM",
+  "sec": "Who owns"
+ },
+ {
+  "id": "IHM-32",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what should my first ihm change look like",
+  "doc": "ONBOARDING-IHM",
+  "sec": "first change"
+ },
+ {
+  "id": "IHM-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what should I read during my first week on ihm",
+  "doc": "ONBOARDING-IHM",
+  "sec": "Reading order"
+ },
+ {
+  "id": "PAT-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how does a write to a scoped list flow through the layers",
+  "doc": "23-scoped",
+  "sec": "Write flow|Worked example"
+ },
+ {
+  "id": "PAT-32",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what are the rules of the scoped list pattern",
+  "doc": "23-scoped",
+  "sec": "Rules of the pattern"
+ },
+ {
+  "id": "PAT-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what must be true before I ask for a review",
+  "doc": "24-coding",
+  "sec": "Before you ask|How to use"
+ },
+ {
+  "id": "DOC-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "how large may a mermaid diagram be",
+  "doc": "21-mermaid",
+  "sec": "Size|big rule"
+ },
+ {
+  "id": "DOC-32",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what rules do headings follow in our markdown files",
+  "doc": "22-markdown",
+  "sec": "Headings"
+ },
+ {
+  "id": "NON-31",
+  "set": "train2",
+  "tier": "easy",
+  "q": "explain in simple words how the parts talk to each other",
+  "doc": "for-non-dev/02"
+ },
+ {
+  "id": "NON-32",
+  "set": "train2",
+  "tier": "easy",
+  "q": "what are the known gaps in plain words",
+  "doc": "for-non-dev/06"
+ },
+ {
+  "id": "NON-33",
+  "set": "train2",
+  "tier": "easy",
+  "q": "who is allowed to sign in, in plain words",
+  "doc": "for-non-dev/03"
+ },
+ {
+  "id": "CODE-31",
+  "set": "train2",
+  "tier": "middle",
+  "q": "the command that publishes a document of a vessel",
+  "code": "^PublishDocumentCommand$"
+ },
+ {
+  "id": "CODE-32",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which command gives the browser a sas token to upload a document",
+  "code": "^GetUploadSasTokenDocumentCommand$"
+ },
+ {
+  "id": "CODE-33",
+  "set": "train2",
+  "tier": "middle",
+  "q": "what collects the domain events while a command runs",
+  "code": "^DomainServiceDomainEventsHolder$"
+ },
+ {
+  "id": "CODE-34",
+  "set": "train2",
+  "tier": "easy",
+  "q": "the controller for companies in the company register",
+  "code": "^CompaniesController$"
+ },
+ {
+  "id": "CODE-35",
+  "set": "train2",
+  "tier": "middle",
+  "q": "which policy reacts when a ticket gets approved",
+  "code": "^OnTicketApproved$"
+ },
+ {
+  "id": "CODE-36",
+  "set": "train2",
+  "tier": "middle",
+  "q": "the service that finds the email persons of zone components of a vessel",
+  "code": "^VesselZoneComponentEmailPersonsService$"
+ },
+ {
+  "id": "CODE-37",
+  "set": "train2",
+  "tier": "middle",
+  "q": "command that deletes many purchase order lines at once",
+  "code": "^DeletePurchaseOrderLineManyCommand$"
+ },
+ {
+  "id": "CODE-38",
+  "set": "train2",
+  "tier": "middle",
+  "q": "the query handler that returns the dry docks of a vessel",
+  "code": "^VesselDryDocksQueryHandler$"
+ },
+ {
+  "id": "CODE-39",
+  "set": "train2",
+  "tier": "easy",
+  "q": "the command that edits an ihm change log",
+  "code": "^EditIhmChangeLogCommand$"
+ },
+ {
+  "id": "CODE-40",
+  "set": "train2",
+  "tier": "middle",
+  "q": "command to change the role of a user in settings",
+  "code": "^UpdateUserRoleCommand$"
+ },
+ {
+  "id": "CODE-41",
+  "set": "train2",
+  "tier": "middle",
+  "q": "query for all components without a category",
+  "code": "^AllComponentsWithoutCategoryQuery$"
+ },
+ {
+  "id": "CODE-42",
+  "set": "train2",
+  "tier": "middle",
+  "q": "the adapter purchase order uses to call the company register",
+  "code": "^CompanyRegisterServiceAdapter$"
+ },
+ {
+  "id": "CODE-43",
+  "set": "train2",
+  "tier": "easy",
+  "q": "the domain event for a created vessel",
+  "code": "^VesselCreated$"
+ },
+ {
+  "id": "CODE-44",
+  "set": "train2",
+  "tier": "middle",
+  "q": "event that asks purchase order to update the md probability",
+  "code": "^UpdateMDProbabilityRequested$"
+ },
+ {
+  "id": "CODE-45",
+  "set": "train2",
+  "tier": "middle",
+  "q": "the pipeline service that checks permissions",
+  "code": "^AuthorizationService$"
+ },
+ {
+  "id": "ARCH-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "why do we need an outbox table",
+  "doc": "01-architecture",
+  "sec": "outbox|transaction"
+ },
+ {
+  "id": "ARCH-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how do the layers inside one service depend on each other",
+  "doc": "01-architecture|24-coding",
+  "sec": "Layering|Layers"
+ },
+ {
+  "id": "ARCH-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how do we log and trace requests across services",
+  "doc": "01-architecture",
+  "sec": "Observability"
+ },
+ {
+  "id": "ARCH-64",
+  "set": "blind",
+  "tier": "middle",
+  "q": "what does dapr give this platform",
+  "doc": "01-architecture|07-deployment",
+  "sec": "Dapr"
+ },
+ {
+  "id": "CTX-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "which service owns the vessel data",
+  "doc": "02-bounded",
+  "sec": "Vessels|catalog"
+ },
+ {
+  "id": "CTX-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "where do I put a feature about a new company type",
+  "doc": "02-bounded",
+  "sec": "Decision aid|CompanyRegister|catalog"
+ },
+ {
+  "id": "CTX-63",
+  "set": "blind",
+  "tier": "easy",
+  "q": "what does supplier followup do",
+  "doc": "02-bounded",
+  "sec": "SupplierFollowup|catalog"
+ },
+ {
+  "id": "EVT-61",
+  "set": "blind",
+  "tier": "easy",
+  "q": "who publishes the vessel changed event",
+  "doc": "03-integration",
+  "sec": "Publisher locations|matrix"
+ },
+ {
+  "id": "EVT-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "an event does not arrive at the consumer, what do I check",
+  "doc": "03-integration",
+  "sec": "Debugging a missing event|Consumer side"
+ },
+ {
+  "id": "EVT-63",
+  "set": "blind",
+  "tier": "hard",
+  "q": "why does vessels handle the flag state event twice",
+  "doc": "03-integration|10-findings",
+  "sec": "subscribes twice|A2"
+ },
+ {
+  "id": "AUTH-61",
+  "set": "blind",
+  "tier": "easy",
+  "q": "what are the audiences of the platform",
+  "doc": "04-authorization",
+  "sec": "audience"
+ },
+ {
+  "id": "AUTH-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "a request fails with 401, how do I find out why",
+  "doc": "04-authorization",
+  "sec": "Debugging a 401"
+ },
+ {
+  "id": "AUTH-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "where is the permission check done in the request pipeline",
+  "doc": "04-authorization|01-architecture",
+  "sec": "enforced|command lifecycle"
+ },
+ {
+  "id": "AUTH-64",
+  "set": "blind",
+  "tier": "hard",
+  "q": "how can a customer be limited to their own data besides permissions",
+  "doc": "04-authorization|23-scoped",
+  "sec": "Data scoping|Read flow"
+ },
+ {
+  "id": "GW-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how does a public url end up at a service",
+  "doc": "05-gateway",
+  "sec": "How a public URL"
+ },
+ {
+  "id": "GW-62",
+  "set": "blind",
+  "tier": "hard",
+  "q": "what traps are there in the route table",
+  "doc": "05-gateway",
+  "sec": "Traps|Route table"
+ },
+ {
+  "id": "GW-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how is cors configured",
+  "doc": "05-gateway",
+  "sec": "CORS"
+ },
+ {
+  "id": "GW-64",
+  "set": "blind",
+  "tier": "easy",
+  "q": "where do I find the swagger documents",
+  "doc": "05-gateway",
+  "sec": "Swagger"
+ },
+ {
+  "id": "FE-61",
+  "set": "blind",
+  "tier": "easy",
+  "q": "how many front end projects are there",
+  "doc": "06-frontend",
+  "sec": "four front-end|1. The four"
+ },
+ {
+  "id": "FE-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "where do the front end and the back end meet most tightly",
+  "doc": "06-frontend",
+  "sec": "Where frontend and backend"
+ },
+ {
+  "id": "FE-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how is a front end app configured for an environment",
+  "doc": "06-frontend",
+  "sec": "Configuration"
+ },
+ {
+  "id": "DEP-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "walk me through a staging delivery",
+  "doc": "07-deployment",
+  "sec": "staging delivery|Pipelines"
+ },
+ {
+  "id": "DEP-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "which dapr annotations does every deployment carry",
+  "doc": "07-deployment",
+  "sec": "Dapr annotations"
+ },
+ {
+  "id": "DEP-63",
+  "set": "blind",
+  "tier": "easy",
+  "q": "is there a checklist for deployments",
+  "doc": "07-deployment",
+  "sec": "checklist"
+ },
+ {
+  "id": "WF-61",
+  "set": "blind",
+  "tier": "easy",
+  "q": "how do I add a new query",
+  "doc": "08-development|24-coding",
+  "sec": "Add a query|Queries"
+ },
+ {
+  "id": "WF-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how do I add an endpoint for a new audience",
+  "doc": "08-development|24-coding",
+  "sec": "audience endpoint|new endpoints"
+ },
+ {
+  "id": "WF-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "which symptom points to which place to look first",
+  "doc": "08-development|RUNNING-LOCALLY",
+  "sec": "Symptom|First stop|Debugging"
+ },
+ {
+  "id": "WF-64",
+  "set": "blind",
+  "tier": "easy",
+  "q": "which conventions must I not break",
+  "doc": "08-development|24-coding",
+  "sec": "Conventions|How to use"
+ },
+ {
+  "id": "BUG-61",
+  "set": "blind",
+  "tier": "hard",
+  "q": "can the outbox lose events without anyone noticing",
+  "doc": "10-findings|19-known|20-improvement",
+  "sec": "D1|U31|Events"
+ },
+ {
+  "id": "BUG-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "where do the docs disagree with the code",
+  "doc": "10-findings|19-known",
+  "sec": "B —|Documentation drift"
+ },
+ {
+  "id": "BUG-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "which front end bugs exist in the list pages",
+  "doc": "19-known",
+  "sec": "P2"
+ },
+ {
+  "id": "BUG-64",
+  "set": "blind",
+  "tier": "easy",
+  "q": "which dead code and leftovers are waiting for cleanup",
+  "doc": "19-known",
+  "sec": "P5"
+ },
+ {
+  "id": "BUG-65",
+  "set": "blind",
+  "tier": "middle",
+  "q": "what is working well in the system today",
+  "doc": "10-findings",
+  "sec": "good shape"
+ },
+ {
+  "id": "CI-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "what does each stage of the pipeline do",
+  "doc": "13-cicd",
+  "sec": "What each stage"
+ },
+ {
+  "id": "CI-62",
+  "set": "blind",
+  "tier": "hard",
+  "q": "does the real pipeline match the documented process",
+  "doc": "13-cicd",
+  "sec": "Where the page|chain as wired"
+ },
+ {
+  "id": "AIPO-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "which fields are mapped between purchase order and aipo",
+  "doc": "14-aipo",
+  "sec": "Field mapping|two repositories"
+ },
+ {
+  "id": "AIPO-62",
+  "set": "blind",
+  "tier": "easy",
+  "q": "what do I need before I can test aipo with postman",
+  "doc": "15-testing-aipo",
+  "sec": "Prerequisites"
+ },
+ {
+  "id": "SRCH-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "which tests cover the azure search feature",
+  "doc": "16-azure-ai-search",
+  "sec": "Test coverage"
+ },
+ {
+  "id": "SRCH-62",
+  "set": "blind",
+  "tier": "easy",
+  "q": "what is still open for azure search",
+  "doc": "16-azure-ai-search",
+  "sec": "Open items"
+ },
+ {
+  "id": "FP-61",
+  "set": "blind",
+  "tier": "easy",
+  "q": "what colours do filter chips get",
+  "doc": "17-filter-panel",
+  "sec": "FP-1"
+ },
+ {
+  "id": "FP-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "why must all dropdown boxes be equally high",
+  "doc": "17-filter-panel",
+  "sec": "FP-7"
+ },
+ {
+  "id": "FP-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how do I check a page against the filter standard",
+  "doc": "17-filter-panel",
+  "sec": "Checklist|How to use"
+ },
+ {
+  "id": "RUN-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "which token do I need to build the front end",
+  "doc": "RUNNING-LOCALLY|ONBOARDING-IHM",
+  "sec": "Pintura"
+ },
+ {
+  "id": "RUN-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "can I start the stack without a database",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "No database|Lighter"
+ },
+ {
+  "id": "RUN-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "what is known to be broken when I run locally",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "Known-broken"
+ },
+ {
+  "id": "IHM-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "what is the cheapest way to work on the ihm user interface",
+  "doc": "ONBOARDING-IHM|RUNNING-LOCALLY",
+  "sec": "Cheapest|Tier 3|Front-end only"
+ },
+ {
+  "id": "IHM-62",
+  "set": "blind",
+  "tier": "easy",
+  "q": "where is the ihm back end code",
+  "doc": "ONBOARDING-IHM",
+  "sec": "Where the IHM code lives|Back end"
+ },
+ {
+  "id": "PAT-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how does a list read flow from controller to database",
+  "doc": "23-scoped",
+  "sec": "Read flow"
+ },
+ {
+  "id": "PAT-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how do handlers decode ids",
+  "doc": "24-coding|23-scoped",
+  "sec": "Ids and filters|worked example|Read flow"
+ },
+ {
+  "id": "PAT-63",
+  "set": "blind",
+  "tier": "easy",
+  "q": "what are the front end style rules",
+  "doc": "24-coding",
+  "sec": "Frontend|style"
+ },
+ {
+  "id": "DOC-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "how do I write a table in a markdown file here",
+  "doc": "22-markdown",
+  "sec": "Tables"
+ },
+ {
+  "id": "DOC-62",
+  "set": "blind",
+  "tier": "easy",
+  "q": "what should I check before committing a diagram",
+  "doc": "21-mermaid",
+  "sec": "Checklist"
+ },
+ {
+  "id": "NON-61",
+  "set": "blind",
+  "tier": "easy",
+  "q": "how do environments and releases work in plain words",
+  "doc": "for-non-dev/04"
+ },
+ {
+  "id": "NON-62",
+  "set": "blind",
+  "tier": "easy",
+  "q": "give me the system at a glance in plain words",
+  "doc": "for-non-dev/01"
+ },
+ {
+  "id": "NON-63",
+  "set": "blind",
+  "tier": "easy",
+  "q": "which services are connected, in plain words",
+  "doc": "for-non-dev/05"
+ },
+ {
+  "id": "DIAG-61",
+  "set": "blind",
+  "tier": "easy",
+  "q": "show me the ticket lifecycle diagram",
+  "doc": "diagrams/12",
+  "sec": "Ticket lifecycle"
+ },
+ {
+  "id": "DIAG-62",
+  "set": "blind",
+  "tier": "easy",
+  "q": "where is the container diagram of the system",
+  "doc": "diagrams/11",
+  "sec": "Container"
+ },
+ {
+  "id": "CODE-61",
+  "set": "blind",
+  "tier": "middle",
+  "q": "the command that copies product and materials info",
+  "code": "^CopyProductAndMaterialsInfoCommand$"
+ },
+ {
+  "id": "CODE-62",
+  "set": "blind",
+  "tier": "middle",
+  "q": "where are the events of a ticket stored in the database",
+  "code": "^TicketEventLogEntry$"
+ },
+ {
+  "id": "CODE-63",
+  "set": "blind",
+  "tier": "middle",
+  "q": "the command to submit a purchase order by hand",
+  "code": "^SubmitPurchaseOrderManuallyCommand$"
+ },
+ {
+  "id": "CODE-64",
+  "set": "blind",
+  "tier": "middle",
+  "q": "the repository for conversion zone plans",
+  "code": "^ConversionZonePlanRepository$"
+ },
+ {
+  "id": "CODE-65",
+  "set": "blind",
+  "tier": "easy",
+  "q": "which controller serves the ihm endpoints in vessels",
+  "code": "^IhmController$"
+ },
+ {
+  "id": "CODE-66",
+  "set": "blind",
+  "tier": "middle",
+  "q": "the policy that runs when a company person is created in the company register",
+  "code": "^OnCompanyPersonCreated$"
+ },
+ {
+  "id": "CODE-67",
+  "set": "blind",
+  "tier": "middle",
+  "q": "query that returns company names for an application",
+  "code": "^CompaniesNamesForApplicationQuery$"
+ },
+ {
+  "id": "CODE-68",
+  "set": "blind",
+  "tier": "middle",
+  "q": "subject of the monthly digest email",
+  "code": "^MonthlyDigestEmailSubject$"
+ },
+ {
+  "id": "CODE-69",
+  "set": "blind",
+  "tier": "middle",
+  "q": "the handler of the conversion documents query",
+  "code": "^ConversionDocumentsQueryHandler$"
+ },
+ {
+  "id": "CODE-70",
+  "set": "blind",
+  "tier": "middle",
+  "q": "the policy for a changed vessel type",
+  "code": "^OnVesselType(Updated|Changed)$"
+ },
+ {
+  "id": "CODE-71",
+  "set": "blind",
+  "tier": "middle",
+  "q": "information about tickets needed for the excel export",
+  "code": "^TicketsExcelExportInfo$"
+ },
+ {
+  "id": "CODE-72",
+  "set": "blind",
+  "tier": "middle",
+  "q": "the dto with the zone information",
+  "code": "^ZoneInformationDto$"
+ },
+ {
+  "id": "CODE-73",
+  "set": "blind",
+  "tier": "middle",
+  "q": "result of duplicating a purchase order",
+  "code": "^DuplicatePurchaseOrderResultDto$"
+ },
+ {
+  "id": "CODE-74",
+  "set": "blind",
+  "tier": "easy",
+  "q": "the base class every aggregate root inherits from",
+  "code": "^AggregateRoot$"
+ },
+ {
+  "id": "CODE-75",
+  "set": "blind",
+  "tier": "middle",
+  "q": "command to update a purchase order through the gateway",
+  "code": "^UpdatePurchaseOrderGatewayCommand$"
+ },
+ {
+  "id": "ARCH-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "where does a command get checked before it runs",
+  "doc": "01-architecture|24-coding",
+  "sec": "command lifecycle|Guard|Validator|Commands, errors"
+ },
+ {
+  "id": "ARCH-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "where is the read data kept and where the write data",
+  "doc": "01-architecture",
+  "sec": "Persistence"
+ },
+ {
+  "id": "ARCH-83",
+  "set": "blind2",
+  "tier": "hard",
+  "q": "how does a domain event become a message for another service",
+  "doc": "01-architecture|03-integration",
+  "sec": "outbox|contract|command lifecycle"
+ },
+ {
+  "id": "CTX-81",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "how many bounded contexts are there and what are they",
+  "doc": "02-bounded",
+  "sec": "catalog"
+ },
+ {
+  "id": "CTX-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "which service is responsible for purchase orders",
+  "doc": "02-bounded",
+  "sec": "PurchaseOrder|catalog"
+ },
+ {
+  "id": "EVT-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how does a service subscribe to an integration event",
+  "doc": "03-integration|08-development",
+  "sec": "Consumer side|Add an integration|Adding"
+ },
+ {
+  "id": "EVT-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "which component events does nobody consume",
+  "doc": "03-integration|10-findings",
+  "sec": "Known problems|A1"
+ },
+ {
+  "id": "AUTH-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how many permissions does the platform define",
+  "doc": "04-authorization|09-repo",
+  "sec": "catalog|Distribution|Permissions"
+ },
+ {
+  "id": "AUTH-82",
+  "set": "blind2",
+  "tier": "hard",
+  "q": "what is the difference between the gateway audience and the application audience",
+  "doc": "04-authorization|05-gateway",
+  "sec": "audience model|Scheme selection"
+ },
+ {
+  "id": "AUTH-83",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "which commands skip the permission check",
+  "doc": "04-authorization|24-coding",
+  "sec": "enforced|Commands, errors"
+ },
+ {
+  "id": "GW-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how are the services reached in production",
+  "doc": "05-gateway|07-deployment",
+  "sec": "Deployed URLs|Environments"
+ },
+ {
+  "id": "GW-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "which routes need extra care",
+  "doc": "05-gateway",
+  "sec": "Traps|Route table"
+ },
+ {
+  "id": "FE-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how does the app use the generated api clients",
+  "doc": "06-frontend|08-development",
+  "sec": "Generated API clients|Rules|Regenerat"
+ },
+ {
+  "id": "FE-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "which projects use the shared common library",
+  "doc": "06-frontend",
+  "sec": "four front-end|common-lib|Feature areas"
+ },
+ {
+  "id": "DEP-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what does docker compose start on my machine",
+  "doc": "07-deployment|RUNNING-LOCALLY",
+  "sec": "Docker Compose|happy path"
+ },
+ {
+  "id": "DEP-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how is the shared infrastructure deployed to kubernetes",
+  "doc": "07-deployment",
+  "sec": "Shared infrastructure"
+ },
+ {
+  "id": "DEP-83",
+  "set": "blind2",
+  "tier": "hard",
+  "q": "why does a deploy remove things before it applies new ones",
+  "doc": "10-findings|07-deployment",
+  "sec": "D3|half-succeeds"
+ },
+ {
+  "id": "WF-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what do I run and check after finishing a change",
+  "doc": "08-development|24-coding",
+  "sec": "Definition of done|Testing|Before you ask"
+ },
+ {
+  "id": "WF-82",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "what are the steps to add a command",
+  "doc": "08-development|24-coding",
+  "sec": "Add a command|Commands"
+ },
+ {
+  "id": "BUG-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "which finding is about a test endpoint that sends real emails",
+  "doc": "10-findings",
+  "sec": "A11"
+ },
+ {
+  "id": "BUG-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what is wrong with the zone plan",
+  "doc": "19-known",
+  "sec": "U9|U18|P1|P2"
+ },
+ {
+  "id": "BUG-83",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "which product decisions are blocking fixes",
+  "doc": "20-improvement|19-known",
+  "sec": "Product decisions|Product and behaviour"
+ },
+ {
+  "id": "CI-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how is a hotfix released",
+  "doc": "13-cicd|07-deployment",
+  "sec": "Release workflow|Branch|Practical guidance|Pipelines"
+ },
+ {
+  "id": "CI-82",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "where do I read more about the pipelines",
+  "doc": "13-cicd",
+  "sec": "Related|Practical guidance"
+ },
+ {
+  "id": "AIPO-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what should I know before changing the aipo call",
+  "doc": "14-aipo",
+  "sec": "gotchas|Where to look|What this is"
+ },
+ {
+  "id": "AIPO-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what is aipo and why does purchase order call it",
+  "doc": "14-aipo",
+  "sec": "What this is|End-to-end flow"
+ },
+ {
+  "id": "SRCH-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how does a purchase order line get into the search index",
+  "doc": "16-azure-ai-search",
+  "sec": "pieces of code|End-to-end|Step by step"
+ },
+ {
+  "id": "SRCH-82",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "which settings does azure search read",
+  "doc": "16-azure-ai-search",
+  "sec": "Configuration keys"
+ },
+ {
+  "id": "FP-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what is the rule for the clear all button",
+  "doc": "17-filter-panel",
+  "sec": "FP-2"
+ },
+ {
+  "id": "FP-82",
+  "set": "blind2",
+  "tier": "hard",
+  "q": "why do I have to rebuild the common library after changing a filter",
+  "doc": "17-filter-panel|06-frontend",
+  "sec": "FP-8|Build order"
+ },
+ {
+  "id": "RUN-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how do I give my own account access locally",
+  "doc": "RUNNING-LOCALLY",
+  "sec": "Onboarding a new developer|Sample data"
+ },
+ {
+  "id": "RUN-82",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "which ports does the local stack use",
+  "doc": "RUNNING-LOCALLY|05-gateway",
+  "sec": "Service ports|Local ports"
+ },
+ {
+  "id": "IHM-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what do I need running for tier one of ihm",
+  "doc": "ONBOARDING-IHM",
+  "sec": "Tier 1|run plan"
+ },
+ {
+  "id": "IHM-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "how do I get the pintura token",
+  "doc": "ONBOARDING-IHM|RUNNING-LOCALLY",
+  "sec": "Step 2|Pintura"
+ },
+ {
+  "id": "IHM-83",
+  "set": "blind2",
+  "tier": "hard",
+  "q": "the ihm page does not load, what could be wrong",
+  "doc": "ONBOARDING-IHM|RUNNING-LOCALLY",
+  "sec": "When something is wrong|First stop|Known-broken"
+ },
+ {
+  "id": "PAT-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "where can I see an example of a scoped list in the code",
+  "doc": "23-scoped",
+  "sec": "Worked example"
+ },
+ {
+  "id": "PAT-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what do the coding patterns not cover yet",
+  "doc": "23-scoped|24-coding",
+  "sec": "Not checked|known gaps"
+ },
+ {
+  "id": "PAT-83",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what are the rules for queries and database access",
+  "doc": "24-coding",
+  "sec": "Queries and the database"
+ },
+ {
+  "id": "PAT-84",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what must a new endpoint and an event follow",
+  "doc": "24-coding|08-development",
+  "sec": "Events, new endpoints|audience endpoint|Add an integration"
+ },
+ {
+  "id": "DOC-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what does the repo checker enforce for markdown files",
+  "doc": "22-markdown",
+  "sec": "checker enforces"
+ },
+ {
+  "id": "DOC-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "what makes a mermaid diagram break",
+  "doc": "21-mermaid",
+  "sec": "Things that break"
+ },
+ {
+  "id": "NON-81",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "what does the platform do, explained for someone who is not technical",
+  "doc": "for-non-dev/01|for-non-dev/README"
+ },
+ {
+  "id": "DIAG-81",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "show how an event flows between services in a diagram",
+  "doc": "diagrams/12",
+  "sec": "Cross-service event flow"
+ },
+ {
+  "id": "DIAG-82",
+  "set": "blind2",
+  "tier": "easy",
+  "q": "where is the picture of a request through the auth gateway",
+  "doc": "diagrams/12",
+  "sec": "Auth gateway request flow"
+ },
+ {
+  "id": "CODE-81",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "query to look up customer companies",
+  "code": "^CustomerCompaniesLookupQuery$"
+ },
+ {
+  "id": "CODE-82",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "handler for the po lines vessel status query",
+  "code": "^POLinesVesselStatusQueryHandler$"
+ },
+ {
+  "id": "CODE-83",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "command that adds or updates a user in the company register",
+  "code": "^UserAddOrUpdateCommand$"
+ },
+ {
+  "id": "CODE-84",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "query to find a company person by email",
+  "code": "^CompanyPersonByEmailQuery$"
+ },
+ {
+  "id": "CODE-85",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "dto that groups ticket counts by vessel",
+  "code": "^TicketsCountGroupedByVesselDto$"
+ },
+ {
+  "id": "CODE-86",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "dto with the inventory per zone",
+  "code": "^InventoryByZonesDto$"
+ },
+ {
+  "id": "CODE-87",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "query that returns the file of a document",
+  "code": "^DocumentFileQuery$"
+ },
+ {
+  "id": "CODE-88",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "handler that creates the alert email when a po import has a problem",
+  "code": "^CreatePoImportAlertEderEmailCommandHandler$"
+ },
+ {
+  "id": "CODE-89",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "handler that adds or updates an external user",
+  "code": "^ExternalUserAddOrUpdateCommandHandler$"
+ },
+ {
+  "id": "CODE-90",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "the data needed to add a new vessel",
+  "code": "^DataForAddingNewVesselDto$"
+ },
+ {
+  "id": "CODE-91",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "policy that runs when a vessel is created",
+  "code": "^OnVesselCreated$"
+ },
+ {
+  "id": "CODE-92",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "base class of the vessel changed policies",
+  "code": "^OnVesselChangedBase$"
+ },
+ {
+  "id": "CODE-93",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "dto that carries a user role inside an integration event",
+  "code": "^UserRoleDto$"
+ },
+ {
+  "id": "CODE-94",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "command that writes a log entry for a digest email that was sent",
+  "code": "^CreateDigestEmailSentLogEntryCommand$"
+ },
+ {
+  "id": "CODE-95",
+  "set": "blind2",
+  "tier": "middle",
+  "q": "filter for the users query in settings",
+  "code": "^UsersFilter$"
+ },
+ {
+  "id": "ARCH-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what is the shared kernel for",
+  "doc": "01-architecture",
+  "sec": "shared kernel"
+ },
+ {
+  "id": "ARCH-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what happens when a command arrives from the controller",
+  "doc": "01-architecture|24-coding",
+  "sec": "command lifecycle|Commands, errors"
+ },
+ {
+  "id": "ARCH-93",
+  "set": "blind3",
+  "tier": "hard",
+  "q": "why is there a table of messages waiting to be sent",
+  "doc": "01-architecture|03-integration",
+  "sec": "outbox"
+ },
+ {
+  "id": "ARCH-94",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how do the services run next to each other when the app is live",
+  "doc": "01-architecture|07-deployment",
+  "sec": "Runtime topology|Environments"
+ },
+ {
+  "id": "CTX-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "which service owns the supplier master data",
+  "doc": "02-bounded",
+  "sec": "CompanyRegister|catalog"
+ },
+ {
+  "id": "CTX-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "where should a new feature go",
+  "doc": "02-bounded",
+  "sec": "Decision aid"
+ },
+ {
+  "id": "EVT-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "which events are sent but nobody listens",
+  "doc": "03-integration|10-findings",
+  "sec": "Known problems|A1|no consumer"
+ },
+ {
+  "id": "EVT-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how are master data changes copied between services",
+  "doc": "03-integration",
+  "sec": "Master-data|Two kinds|matrix"
+ },
+ {
+  "id": "EVT-93",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "an event I published never arrives, what do I check",
+  "doc": "03-integration",
+  "sec": "Debugging a missing"
+ },
+ {
+  "id": "AUTH-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how are the permission numbers chosen",
+  "doc": "04-authorization",
+  "sec": "numbering|catalog"
+ },
+ {
+  "id": "AUTH-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what do I do to add a new permission",
+  "doc": "04-authorization|08-development",
+  "sec": "Rules for adding|Distribution|catalog"
+ },
+ {
+  "id": "AUTH-93",
+  "set": "blind3",
+  "tier": "hard",
+  "q": "how is a user limited to the data of their own company",
+  "doc": "04-authorization",
+  "sec": "Data scoping"
+ },
+ {
+  "id": "AUTH-94",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "which settings does sign in need",
+  "doc": "04-authorization",
+  "sec": "Configuration"
+ },
+ {
+  "id": "GW-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how do I see the api documentation in the browser",
+  "doc": "05-gateway",
+  "sec": "Swagger"
+ },
+ {
+  "id": "GW-92",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "how do I check that a service is alive",
+  "doc": "05-gateway",
+  "sec": "Health checks"
+ },
+ {
+  "id": "FE-91",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "what are the four web apps",
+  "doc": "06-frontend",
+  "sec": "four front-end"
+ },
+ {
+  "id": "FE-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "in what order do I build the front-end parts",
+  "doc": "06-frontend|RUNNING-LOCALLY",
+  "sec": "Build order|happy path"
+ },
+ {
+  "id": "FE-93",
+  "set": "blind3",
+  "tier": "hard",
+  "q": "where do the screens and the back end depend on each other most",
+  "doc": "06-frontend",
+  "sec": "tightly"
+ },
+ {
+  "id": "DEP-91",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "how many environments do we have",
+  "doc": "07-deployment",
+  "sec": "Environments"
+ },
+ {
+  "id": "DEP-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "do the services each have their own database",
+  "doc": "07-deployment",
+  "sec": "Database topology"
+ },
+ {
+  "id": "DEP-93",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "which switches change how the app behaves in each environment",
+  "doc": "07-deployment",
+  "sec": "switches|Configuration model"
+ },
+ {
+  "id": "WF-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how do I add a database migration",
+  "doc": "08-development",
+  "sec": "EF migration"
+ },
+ {
+  "id": "WF-92",
+  "set": "blind3",
+  "tier": "hard",
+  "q": "a screen shows wrong data, where do I start looking",
+  "doc": "08-development",
+  "sec": "Symptom|Debugging|Trace"
+ },
+ {
+  "id": "WF-93",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what is the state of unit tests in the repository",
+  "doc": "08-development|10-findings",
+  "sec": "Testing|A3"
+ },
+ {
+  "id": "BUG-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "which finding says deleting a vessel leaves old search results",
+  "doc": "10-findings",
+  "sec": "A9"
+ },
+ {
+  "id": "BUG-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "which known bug breaks the excel import",
+  "doc": "19-known",
+  "sec": "U11"
+ },
+ {
+  "id": "BUG-93",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "which improvement ideas are about security",
+  "doc": "20-improvement",
+  "sec": "Security"
+ },
+ {
+  "id": "BUG-94",
+  "set": "blind3",
+  "tier": "hard",
+  "q": "a ticket keeps the customer name instead of an id, is that known",
+  "doc": "19-known",
+  "sec": "U14"
+ },
+ {
+  "id": "CI-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "which branch goes to which pipeline",
+  "doc": "13-cicd",
+  "sec": "Branch => pipeline|Branch"
+ },
+ {
+  "id": "CI-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what does each pipeline stage run",
+  "doc": "13-cicd",
+  "sec": "What each stage"
+ },
+ {
+  "id": "AIPO-91",
+  "set": "blind3",
+  "tier": "hard",
+  "q": "why does the call to aipo lose its trailing slash",
+  "doc": "14-aipo",
+  "sec": "Dapr strips|gotchas"
+ },
+ {
+  "id": "AIPO-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how do I try aipo on dev with postman",
+  "doc": "15-testing-aipo"
+ },
+ {
+  "id": "SRCH-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what does the search setup program create",
+  "doc": "16-azure-ai-search",
+  "sec": "provisioner creates"
+ },
+ {
+  "id": "SRCH-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what is missing from the search tests",
+  "doc": "16-azure-ai-search",
+  "sec": "Test coverage"
+ },
+ {
+  "id": "FP-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how tall should the option list of a dropdown be",
+  "doc": "17-filter-panel",
+  "sec": "FP-6"
+ },
+ {
+  "id": "FP-92",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "what colours do the filter chips use",
+  "doc": "17-filter-panel",
+  "sec": "FP-1"
+ },
+ {
+  "id": "RUN-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how do I connect to the local database from my own machine",
+  "doc": "18-seeding|RUNNING-LOCALLY",
+  "sec": "Connect from the host|No database"
+ },
+ {
+  "id": "RUN-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how do I rebuild just one service",
+  "doc": "RUNNING-LOCALLY|08-development",
+  "sec": "Getting your changes|Running the platform"
+ },
+ {
+  "id": "IHM-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what is the cheapest way to work on ihm without a browser",
+  "doc": "ONBOARDING-IHM",
+  "sec": "Cheapest|Tier 3|run plan"
+ },
+ {
+  "id": "IHM-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "where in the code do the ihm changes live",
+  "doc": "ONBOARDING-IHM|23-scoped",
+  "sec": "Where the IHM code|Back end|Worked example"
+ },
+ {
+  "id": "PAT-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "what are the read and write steps of a scoped list",
+  "doc": "23-scoped",
+  "sec": "Read flow|Write flow"
+ },
+ {
+  "id": "PAT-92",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how should controllers be written",
+  "doc": "24-coding",
+  "sec": "Controllers"
+ },
+ {
+  "id": "PAT-93",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "what should I do before asking for a review",
+  "doc": "24-coding",
+  "sec": "Before you ask"
+ },
+ {
+  "id": "DOC-91",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "how big may a diagram be",
+  "doc": "21-mermaid",
+  "sec": "Size"
+ },
+ {
+  "id": "DOC-92",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "which markdown flavour do we use",
+  "doc": "22-markdown",
+  "sec": "flavor"
+ },
+ {
+  "id": "NON-91",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "who is allowed to sign in, in simple words",
+  "doc": "for-non-dev/03"
+ },
+ {
+  "id": "NON-92",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "what is still missing in the platform, in simple words",
+  "doc": "for-non-dev/06"
+ },
+ {
+  "id": "DIAG-91",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "show the life of a ticket as a diagram",
+  "doc": "diagrams/12",
+  "sec": "Ticket lifecycle"
+ },
+ {
+  "id": "DIAG-92",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "the big picture box diagram of the whole system",
+  "doc": "diagrams/11",
+  "sec": "System context|Container"
+ },
+ {
+  "id": "CODE-96",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "the result row of looking up a company by its name",
+  "code": "^CompanyByNameDto$"
+ },
+ {
+  "id": "CODE-97",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "handler that creates a document type in settings",
+  "code": "^CreateDocumentTypeCommandHandler$"
+ },
+ {
+  "id": "CODE-98",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "in-memory repository for vessel ihm imports",
+  "code": "^VesselIhmImportRepository$"
+ },
+ {
+  "id": "CODE-99",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "handler that uploads several documents and submits the ticket",
+  "code": "^UploadMultipleDocumentsAndSubmitTicketCommandHandler$"
+ },
+ {
+  "id": "CODE-100",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "command that automatically sends many purchase order lines to the supplier",
+  "code": "^AutoSendToSupplierManyCommand$"
+ },
+ {
+  "id": "CODE-101",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "handler that deletes a document of a conversion",
+  "code": "^DeleteConversionDocumentCommandHandler$"
+ },
+ {
+  "id": "CODE-102",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "query that finds a vessel by imo number for clickup",
+  "code": "^VesselByImoNumberForClickupQuery$"
+ },
+ {
+  "id": "CODE-103",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "query for a page of tickets as a supplier sees them",
+  "code": "^TicketsPageForSupplierQuery$"
+ },
+ {
+  "id": "CODE-104",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "handler for the part b suppliers and components query",
+  "code": "^PartBSupAndCompQueryHandler$"
+ },
+ {
+  "id": "CODE-105",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "command that updates the general arrangement plan of a conversion",
+  "code": "^UpdateGaPlanCommand$"
+ },
+ {
+  "id": "CODE-106",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "handler that adds or updates a supplier in purchase order",
+  "code": "^SupplierAddOrUpdateCommandHandler$"
+ },
+ {
+  "id": "CODE-107",
+  "set": "blind3",
+  "tier": "middle",
+  "q": "handler that returns all user roles in settings",
+  "code": "^AllUserRolesQueryHandler$"
+ },
+ {
+  "id": "NEG-91",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "best way to cook rice",
+  "none": true
+ },
+ {
+  "id": "NEG-92",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "how do I fix a flat bicycle tyre",
+  "none": true
+ },
+ {
+  "id": "NEG-93",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "translate good morning into french",
+  "none": true
+ },
+ {
+  "id": "NEG-94",
+  "set": "blind3",
+  "tier": "easy",
+  "q": "what is the capital of australia",
+  "none": true
+ },
+ {
+  "id": "ESG-01",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "easy",
+  "q": "how many modules does esg have and what are they",
+  "doc": "02-modules",
+  "sec": "Module catalog"
+ },
+ {
+  "id": "ESG-02",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "where should a new feature go in esg",
+  "doc": "02-modules",
+  "sec": "Where should a feature go"
+ },
+ {
+  "id": "ESG-03",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how does an esg command get checked and run",
+  "doc": "01-architecture",
+  "sec": "Command lifecycle"
+ },
+ {
+  "id": "ESG-04",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "what happens when a domain event is raised in esg",
+  "doc": "03-domain-events",
+  "sec": "Raise and publish|Event and policy"
+ },
+ {
+  "id": "ESG-05",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how are emails sent through the service bus",
+  "doc": "03-domain-events",
+  "sec": "Service Bus email"
+ },
+ {
+  "id": "ESG-06",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "easy",
+  "q": "which sign in schemes does esg use",
+  "doc": "04-authorization",
+  "sec": "Sign-in schemes"
+ },
+ {
+  "id": "ESG-07",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "which handlers have no permission check",
+  "doc": "04-authorization|10-findings",
+  "sec": "Handlers without|A3"
+ },
+ {
+  "id": "ESG-08",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how is data limited to one organization",
+  "doc": "04-authorization",
+  "sec": "Organization data scope"
+ },
+ {
+  "id": "ESG-09",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "easy",
+  "q": "how do I debug a 401 or denied request in esg",
+  "doc": "04-authorization",
+  "sec": "Debug a 401"
+ },
+ {
+  "id": "ESG-10",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "which routes does the esg api expose",
+  "doc": "05-api-surface",
+  "sec": "Route to handler|Controller route map"
+ },
+ {
+  "id": "ESG-11",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how does the report preview and pdf work in the front end",
+  "doc": "06-frontend",
+  "sec": "Report preview"
+ },
+ {
+  "id": "ESG-12",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "easy",
+  "q": "which environments and urls does esg have",
+  "doc": "07-deployment",
+  "sec": "Environments and URLs"
+ },
+ {
+  "id": "ESG-13",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "which azure resources does esg use",
+  "doc": "07-deployment",
+  "sec": "Azure resources"
+ },
+ {
+  "id": "ESG-14",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "what should I check after an esg deploy",
+  "doc": "07-deployment",
+  "sec": "Deployment checklist|Half-done"
+ },
+ {
+  "id": "ESG-15",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "easy",
+  "q": "how do I add a command in esg",
+  "doc": "08-development",
+  "sec": "Add a command"
+ },
+ {
+  "id": "ESG-16",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how do I add a cosmos container",
+  "doc": "08-development|14-persistence",
+  "sec": "Cosmos container|Cosmos DB containers"
+ },
+ {
+  "id": "ESG-17",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how do I add a sql migration in esg",
+  "doc": "08-development|14-persistence",
+  "sec": "SQL migration|Migration entry"
+ },
+ {
+  "id": "ESG-18",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how do I add an azure function to esg",
+  "doc": "08-development",
+  "sec": "Add a Function"
+ },
+ {
+  "id": "ESG-19",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "which domain events have no handler",
+  "doc": "10-findings",
+  "sec": "A1"
+ },
+ {
+  "id": "ESG-20",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "hard",
+  "q": "are there commands that nobody ever sends",
+  "doc": "10-findings",
+  "sec": "A4"
+ },
+ {
+  "id": "ESG-21",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "hard",
+  "q": "does the pipeline guide match the checked in yaml",
+  "doc": "10-findings|13-cicd",
+  "sec": "B1|Documentation drift"
+ },
+ {
+  "id": "ESG-22",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "which cosmos containers exist",
+  "doc": "14-persistence",
+  "sec": "Cosmos DB containers"
+ },
+ {
+  "id": "ESG-23",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how is a report created from a template",
+  "doc": "15-reports",
+  "sec": "Create a report from a template"
+ },
+ {
+  "id": "ESG-24",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "how does onlyoffice load and save a document",
+  "doc": "15-reports",
+  "sec": "OnlyOffice document"
+ },
+ {
+  "id": "ESG-25",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "what is in the esg shared kernel",
+  "doc": "01-architecture",
+  "sec": "Shared kernel"
+ },
+ {
+  "id": "ESG-26",
+  "set": "proj1",
+  "project": "esg",
+  "tier": "middle",
+  "q": "the behavior that checks permissions on every esg request",
+  "code": "^CommandsAndQueriesAuthorizationBehavior$"
+ },
+ {
+  "id": "PAIPO-01",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "easy",
+  "q": "give me the overview of the aipo service",
+  "doc": "README",
+  "sec": "60-second overview"
+ },
+ {
+  "id": "PAIPO-02",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "easy",
+  "q": "how is the aipo repository laid out",
+  "doc": "README",
+  "sec": "Repository map"
+ },
+ {
+  "id": "PAIPO-03",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "how does a request flow through aipo from start to finish",
+  "doc": "README",
+  "sec": "Request and review flow"
+ },
+ {
+  "id": "PAIPO-04",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "how does aipo classify the topic of a line",
+  "doc": "README",
+  "sec": "Topic classification"
+ },
+ {
+  "id": "PAIPO-05",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "how does aipo make the ihm decision",
+  "doc": "README",
+  "sec": "IHM decision"
+ },
+ {
+  "id": "PAIPO-06",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "where does aipo store its results",
+  "doc": "README",
+  "sec": "Persistence and response"
+ },
+ {
+  "id": "PAIPO-07",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "easy",
+  "q": "which management commands does aipo have",
+  "doc": "README",
+  "sec": "Management commands"
+ },
+ {
+  "id": "PAIPO-08",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "how does sign in work in aipo",
+  "doc": "README",
+  "sec": "Authentication"
+ },
+ {
+  "id": "PAIPO-09",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "how do I run aipo locally and how is it deployed",
+  "doc": "README",
+  "sec": "Local runtime and deployment"
+ },
+ {
+  "id": "PAIPO-10",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "where do I start reading the aipo code",
+  "doc": "README",
+  "sec": "Developer navigation guide"
+ },
+ {
+  "id": "PAIPO-11",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "hard",
+  "q": "how much can I trust the code graph of aipo",
+  "doc": "README",
+  "sec": "Graphify evidence"
+ },
+ {
+  "id": "PAIPO-12",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "easy",
+  "q": "show the architecture diagram of aipo",
+  "doc": "diagrams/01"
+ },
+ {
+  "id": "PAIPO-13",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "easy",
+  "q": "draw the workflow of an aipo review",
+  "doc": "diagrams/02"
+ },
+ {
+  "id": "PAIPO-14",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "the model that holds a review of a purchase order line in aipo",
+  "code": "^PurchaseOrderLineReview$"
+ },
+ {
+  "id": "PAIPO-15",
+  "set": "proj1",
+  "project": "aipo",
+  "tier": "middle",
+  "q": "the admin screen for purchase order lines in aipo",
+  "code": "^PurchaseOrderLineAdmin$"
+ },
+ {
+  "id": "TECH-01",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what is the transactional outbox pattern",
+  "doc": "howto-outbox"
+ },
+ {
+  "id": "TECH-02",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how does the saga pattern handle a failure across services",
+  "doc": "patterns/saga"
+ },
+ {
+  "id": "TECH-03",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what is cqrs and when should I use it",
+  "doc": "patterns/cqrs|cqrs-microservice"
+ },
+ {
+  "id": "TECH-04",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do I stop calling a failing service again and again",
+  "doc": "circuit-breaker"
+ },
+ {
+  "id": "TECH-05",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how should I retry transient errors",
+  "doc": "patterns/retry|transient"
+ },
+ {
+  "id": "TECH-06",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what is the cache aside pattern",
+  "doc": "cache-aside"
+ },
+ {
+  "id": "TECH-07",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do domain events work in domain driven design",
+  "doc": "domain-events-design"
+ },
+ {
+  "id": "TECH-08",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "what is the claim check pattern for large messages",
+  "doc": "claim-check"
+ },
+ {
+  "id": "TECH-09",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "what is the strangler fig approach to replacing an old system",
+  "doc": "strangler"
+ },
+ {
+  "id": "TECH-10",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "what is an aggregate in domain driven design",
+  "doc": "microservice-domain-model|ddd"
+ },
+ {
+  "id": "TECH-11",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do split queries differ from single queries in ef core",
+  "doc": "single-split-queries"
+ },
+ {
+  "id": "TECH-12",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "what does tracking mean for ef core queries",
+  "doc": "querying/tracking"
+ },
+ {
+  "id": "TECH-13",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "how does lazy loading work in ef core",
+  "doc": "related-data/lazy"
+ },
+ {
+  "id": "TECH-14",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do I handle concurrency conflicts when saving with ef core",
+  "doc": "saving/concurrency"
+ },
+ {
+  "id": "TECH-15",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do I make ef core queries efficient",
+  "doc": "efficient-querying"
+ },
+ {
+  "id": "TECH-16",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what are signals in angular",
+  "doc": "signals/overview"
+ },
+ {
+  "id": "TECH-17",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what are the lifecycle hooks of an angular component",
+  "doc": "components/lifecycle"
+ },
+ {
+  "id": "TECH-18",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how does flink recover from a failure with checkpoints",
+  "doc": "fault_tolerance"
+ },
+ {
+  "id": "TECH-19",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how does flink deal with event time and watermarks",
+  "doc": "concepts/time"
+ },
+ {
+  "id": "TECH-20",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "what is stateful stream processing",
+  "doc": "stateful-stream-processing"
+ },
+ {
+  "id": "TECH-21",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how does hdfs replicate data and survive a datanode failure",
+  "doc": "HdfsDesign"
+ },
+ {
+  "id": "TECH-22",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what does yarn do in hadoop",
+  "doc": "hadoop-yarn.*YARN\\.md"
+ },
+ {
+  "id": "TECH-23",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do I tune spark memory and serialization",
+  "doc": "spark-docs/docs/tuning"
+ },
+ {
+  "id": "TECH-24",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do I choose a batch processing technology on azure",
+  "doc": "batch-processing"
+ },
+ {
+  "id": "TECH-25",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what is a data lake",
+  "doc": "data-lake"
+ },
+ {
+  "id": "TECH-26",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do I choose a stream processing technology",
+  "doc": "stream-processing"
+ },
+ {
+  "id": "TECH-27",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do event hubs scale with partitions",
+  "doc": "event-hubs-scalability|event-processor-balance-partition-load"
+ },
+ {
+  "id": "TECH-28",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "middle",
+  "q": "how do I set up publish and subscribe with dapr",
+  "doc": "pubsub"
+ },
+ {
+  "id": "TECH-29",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "easy",
+  "q": "what are the dapr building blocks",
+  "doc": "concepts/building-blocks|concepts/overview"
+ },
+ {
+  "id": "TECH-30",
+  "set": "proj1",
+  "project": "tech",
+  "tier": "hard",
+  "q": "why do services in a cluster use a helper process next to them for calls",
+  "doc": "dapr.*concepts|service-invocation"
+ },
+ {
+  "id": "ARCH-101",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "why does a handler never push a message to the bus straight away",
+  "doc": "01-architecture",
+  "sec": "outbox"
+ },
+ {
+  "id": "ARCH-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "which layers is one service split into and what may call what",
+  "doc": "01-architecture",
+  "sec": "Layering"
+ },
+ {
+  "id": "ARCH-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how do the services talk to each other while running",
+  "doc": "01-architecture",
+  "sec": "Runtime topology"
+ },
+ {
+  "id": "ARCH-104",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "where do I look to see traces and logs of a request",
+  "doc": "01-architecture",
+  "sec": "Observability"
+ },
+ {
+  "id": "ARCH-105",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "which database engine does the code use and how does the schema change",
+  "doc": "01-architecture",
+  "sec": "Persistence"
+ },
+ {
+  "id": "ARCH-106",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "when do I throw from a guard and when do I use a validator",
+  "doc": "01-architecture",
+  "sec": "Guard"
+ },
+ {
+  "id": "CTX-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "which service owns the crew and vessel data",
+  "doc": "02-bounded",
+  "sec": "Vessels"
+ },
+ {
+  "id": "CTX-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "which tool copies the old data into the new databases",
+  "doc": "02-bounded",
+  "sec": "DataMigrator"
+ },
+ {
+  "id": "CTX-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "I am adding a feature about supplier companies, which service should hold it",
+  "doc": "02-bounded",
+  "sec": "Decision aid"
+ },
+ {
+  "id": "CTX-104",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "how many separate services are there and what are they called",
+  "doc": "02-bounded",
+  "sec": "catalog"
+ },
+ {
+  "id": "CTX-105",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "what is the conversions service for",
+  "doc": "02-bounded",
+  "sec": "Conversions"
+ },
+ {
+  "id": "EVT-101",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "which service listens to the events that vessels publishes",
+  "doc": "03-integration"
+ },
+ {
+  "id": "EVT-102",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "what happens when an event handler fails halfway",
+  "doc": "03-integration|01-architecture"
+ },
+ {
+  "id": "EVT-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how do I add a new event that another service reads",
+  "doc": "03-integration|08-development"
+ },
+ {
+  "id": "EVT-104",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "are there messages that nobody receives",
+  "doc": "03-integration|10-findings"
+ },
+ {
+  "id": "AUTH-101",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how is a user kept from seeing another company data",
+  "doc": "04-authorization"
+ },
+ {
+  "id": "AUTH-102",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "what decides who may call an endpoint in the portal",
+  "doc": "04-authorization"
+ },
+ {
+  "id": "AUTH-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how do I add a new permission",
+  "doc": "04-authorization|08-development"
+ },
+ {
+  "id": "GW-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "which port does the gateway use on my machine",
+  "doc": "05-gateway",
+  "sec": "Local ports"
+ },
+ {
+  "id": "GW-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "why does the browser say a cross origin request is blocked",
+  "doc": "05-gateway",
+  "sec": "CORS"
+ },
+ {
+  "id": "GW-103",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "how can I tell that a service is alive",
+  "doc": "05-gateway",
+  "sec": "Health"
+ },
+ {
+  "id": "GW-104",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "where are the swagger pages of each service",
+  "doc": "05-gateway",
+  "sec": "Swagger"
+ },
+ {
+  "id": "FE-101",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how is the shared component library built and used by the apps",
+  "doc": "06-frontend"
+ },
+ {
+  "id": "FE-102",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "which angular apps does the repo have",
+  "doc": "06-frontend"
+ },
+ {
+  "id": "FE-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how is the typed api client for the browser made",
+  "doc": "06-frontend"
+ },
+ {
+  "id": "DEP-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "which environments exist and how do they differ",
+  "doc": "07-deployment"
+ },
+ {
+  "id": "DEP-102",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "how do secrets reach the running containers",
+  "doc": "07-deployment"
+ },
+ {
+  "id": "DEP-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "what sits in front of the apps in production",
+  "doc": "07-deployment"
+ },
+ {
+  "id": "WF-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "what are the steps to add a new endpoint",
+  "doc": "08-development"
+ },
+ {
+  "id": "WF-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how do I run the tests of a service",
+  "doc": "08-development",
+  "sec": "Testing"
+ },
+ {
+  "id": "WF-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "what naming rule do branches follow",
+  "doc": "08-development|13-cicd"
+ },
+ {
+  "id": "BUG-101",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "which events are sent but have no listener",
+  "doc": "10-findings"
+ },
+ {
+  "id": "BUG-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "where do the written docs and the real code disagree",
+  "doc": "10-findings"
+ },
+ {
+  "id": "BUG-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "which bugs are known and still open in the vessel area",
+  "doc": "19-known"
+ },
+ {
+  "id": "BUG-104",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "why did a call to aipo fail because of a slash at the end of the url",
+  "doc": "14-aipo",
+  "sec": "4.1"
+ },
+ {
+  "id": "BUG-105",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "is the aipo ingest endpoint protected by a token",
+  "doc": "14-aipo",
+  "sec": "4.2"
+ },
+ {
+  "id": "CI-101",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "which branch starts which pipeline",
+  "doc": "13-cicd",
+  "sec": "Branch"
+ },
+ {
+  "id": "CI-102",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "where does the written release process differ from the real pipelines",
+  "doc": "13-cicd",
+  "sec": "disagree"
+ },
+ {
+  "id": "CI-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "what does each stage of the pipeline run",
+  "doc": "13-cicd",
+  "sec": "stage"
+ },
+ {
+  "id": "CI-104",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "how is a release cut",
+  "doc": "13-cicd",
+  "sec": "Release"
+ },
+ {
+  "id": "AIPO-101",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "which fields are mapped between a purchase order line and aipo",
+  "doc": "14-aipo",
+  "sec": "Field mapping"
+ },
+ {
+  "id": "AIPO-102",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "what happens after a review is updated by aipo",
+  "doc": "14-aipo"
+ },
+ {
+  "id": "AIPO-103",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "where do I look when the aipo link stops working",
+  "doc": "14-aipo",
+  "sec": "Where to look"
+ },
+ {
+  "id": "AIPO-104",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "how do I try the aipo endpoint with postman",
+  "doc": "15-testing"
+ },
+ {
+  "id": "SRCH-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "which settings does azure search need",
+  "doc": "16-azure-ai-search",
+  "sec": "Configuration keys"
+ },
+ {
+  "id": "SRCH-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "who creates the search index and fields",
+  "doc": "16-azure-ai-search",
+  "sec": "provisioner"
+ },
+ {
+  "id": "SRCH-103",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "why did the search stop taking new documents on the free tier",
+  "doc": "16-azure-ai-search",
+  "sec": "Free-tier"
+ },
+ {
+  "id": "FP-101",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how should a filter panel look on a phone",
+  "doc": "17-filter-panel"
+ },
+ {
+  "id": "FP-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "what should happen to the filter chips when I clear all",
+  "doc": "17-filter-panel"
+ },
+ {
+  "id": "FP-103",
+  "set": "blind4",
+  "tier": "hard",
+  "q": "after I change a filter component the app does not show it",
+  "doc": "17-filter-panel",
+  "sec": "FP-8"
+ },
+ {
+  "id": "RUN-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "how do I wipe the local database and start fresh",
+  "doc": "RUNNING-LOCALLY"
+ },
+ {
+  "id": "RUN-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how do I put test rows into my local sql",
+  "doc": "18-seeding"
+ },
+ {
+  "id": "RUN-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "the local sql container does not start",
+  "doc": "RUNNING-LOCALLY"
+ },
+ {
+  "id": "RUN-104",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "how do I connect to the local database from my computer",
+  "doc": "18-seeding",
+  "sec": "Connect from the host"
+ },
+ {
+  "id": "IHM-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "what should I read first in my first week on ihm",
+  "doc": "ONBOARDING-IHM",
+  "sec": "Reading order"
+ },
+ {
+  "id": "IHM-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how do I make my first small ihm change from start to end",
+  "doc": "ONBOARDING-IHM",
+  "sec": "first change"
+ },
+ {
+  "id": "PAT-101",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "what steps list the rows of one scope for a user",
+  "doc": "23-scoped-list",
+  "sec": "Read flow"
+ },
+ {
+  "id": "PAT-102",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "how is the child row made when its parent is created",
+  "doc": "23-scoped-list",
+  "sec": "Create flow"
+ },
+ {
+  "id": "PAT-103",
+  "set": "blind4",
+  "tier": "middle",
+  "q": "which coding mistakes do reviewers catch most often",
+  "doc": "24-coding-patterns"
+ },
+ {
+  "id": "DOC-101",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "how do I draw a diagram in a doc so that it shows up",
+  "doc": "21-mermaid"
+ },
+ {
+  "id": "DOC-102",
+  "set": "blind4",
+  "tier": "easy",
+  "q": "what rules do the markdown files in the docs follow",
+  "doc": "22-markdown"
+ },
+ {
+  "id": "CODE-201",
+  "set": "blind4",
+  "tier": "easy",
+  "area": "code",
+  "q": "where is the class that asks aipo to review an ihm line",
+  "code": "^AipoIhmReviewServiceAdapter$"
+ },
+ {
+  "id": "CODE-202",
+  "set": "blind4",
+  "tier": "easy",
+  "area": "code",
+  "q": "which class makes the ihm pdf files",
+  "code": "^IhmPdfGenerator$"
+ },
+ {
+  "id": "CODE-203",
+  "set": "blind4",
+  "tier": "middle",
+  "area": "code",
+  "q": "where is the client vessels uses to call purchase order",
+  "code": "^PurchaseOrderApiClient$"
+ },
+ {
+  "id": "CODE-204",
+  "set": "blind4",
+  "tier": "middle",
+  "area": "code",
+  "q": "which class holds the tests of the search adapter",
+  "code": "^PoReviewSearchAdapterTests$"
+ },
+ {
+  "id": "CODE-205",
+  "set": "blind4",
+  "tier": "middle",
+  "area": "code",
+  "q": "where is the event for a flag state change declared",
+  "code": "^FlagStateChanged$"
+ },
+ {
+  "id": "NEG-101",
+  "set": "blind4",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how do I bake sourdough bread at home",
+  "none": true
+ },
+ {
+  "id": "NEG-102",
+  "set": "blind4",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "who won the football world cup in 2010",
+  "none": true
+ },
+ {
+  "id": "NEG-103",
+  "set": "blind4",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "write a short poem about autumn leaves",
+  "none": true
+ },
+ {
+  "id": "NEG-104",
+  "set": "blind4",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how far is the moon from the earth",
+  "none": true
+ },
+ {
+  "id": "ARCH-301",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "what are the steps a command goes through from the request to the database",
+  "doc": "01-architecture",
+  "sec": "command lifecycle"
+ },
+ {
+  "id": "ARCH-302",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "what is the project every service shares and what does it hold",
+  "doc": "01-architecture",
+  "sec": "shared kernel"
+ },
+ {
+  "id": "ARCH-303",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "what do we use the sidecar for in this system",
+  "doc": "01-architecture",
+  "sec": "Dapr"
+ },
+ {
+  "id": "ARCH-304",
+  "set": "blind5",
+  "tier": "hard",
+  "q": "what keeps a message from getting lost when the broker is down",
+  "doc": "01-architecture",
+  "sec": "outbox"
+ },
+ {
+  "id": "CTX-301",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "which service owns the purchase order lines",
+  "doc": "02-bounded",
+  "sec": "PurchaseOrder"
+ },
+ {
+  "id": "CTX-302",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "which service handles supplier tickets and follow ups",
+  "doc": "02-bounded",
+  "sec": "SupplierFollowup"
+ },
+ {
+  "id": "CTX-303",
+  "set": "blind5",
+  "tier": "hard",
+  "q": "does every service have its own database server",
+  "doc": "07-deployment|10-findings|02-bounded"
+ },
+ {
+  "id": "GW-301",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "what url path reaches the vessels service from outside",
+  "doc": "05-gateway",
+  "sec": "Route table"
+ },
+ {
+  "id": "GW-302",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "what are the web addresses of the live environments",
+  "doc": "05-gateway|07-deployment"
+ },
+ {
+  "id": "DEP-301",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "how do I find out which settings a deployed service reads",
+  "doc": "07-deployment",
+  "sec": "Configuration"
+ },
+ {
+  "id": "DEP-302",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "what should I check before I release to production",
+  "doc": "07-deployment",
+  "sec": "checklist"
+ },
+ {
+  "id": "DEP-303",
+  "set": "blind5",
+  "tier": "hard",
+  "q": "only some parts of a rollout worked, what now",
+  "doc": "07-deployment",
+  "sec": "half-succeeds"
+ },
+ {
+  "id": "DEP-304",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "how do I start all services in containers on my laptop",
+  "doc": "07-deployment|RUNNING-LOCALLY|08-development"
+ },
+ {
+  "id": "WF-301",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "how do I make a database change for a service",
+  "doc": "08-development",
+  "sec": "migration"
+ },
+ {
+  "id": "WF-302",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "how do I add an endpoint that only reads data",
+  "doc": "08-development",
+  "sec": "query"
+ },
+ {
+  "id": "WF-303",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "when can I say my change is finished",
+  "doc": "08-development",
+  "sec": "Definition of done"
+ },
+ {
+  "id": "WF-304",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "a call fails and I do not know why, where do I start",
+  "doc": "08-development",
+  "sec": "Symptom"
+ },
+ {
+  "id": "WF-305",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "how do I refresh the generated typescript clients",
+  "doc": "08-development|06-frontend"
+ },
+ {
+  "id": "BUG-301",
+  "set": "blind5",
+  "tier": "hard",
+  "q": "does the in memory mode work for the vessel lists",
+  "doc": "10-findings"
+ },
+ {
+  "id": "BUG-302",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "is there an endpoint that could send real alert emails by mistake",
+  "doc": "10-findings"
+ },
+ {
+  "id": "BUG-303",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "how many unit tests does the repo have",
+  "doc": "10-findings"
+ },
+ {
+  "id": "BUG-304",
+  "set": "blind5",
+  "tier": "hard",
+  "q": "which release pipelines sit in the wrong folder",
+  "doc": "10-findings|07-deployment|13-cicd"
+ },
+ {
+  "id": "CI-301",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "which pipeline file runs when I merge to main",
+  "doc": "13-cicd",
+  "sec": "pipeline map"
+ },
+ {
+  "id": "FE-301",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "what are the four front end projects",
+  "doc": "06-frontend",
+  "sec": "four front-end"
+ },
+ {
+  "id": "FE-302",
+  "set": "blind5",
+  "tier": "middle",
+  "q": "in what order must the angular projects be built",
+  "doc": "06-frontend",
+  "sec": "Build order"
+ },
+ {
+  "id": "FE-303",
+  "set": "blind5",
+  "tier": "easy",
+  "q": "which pages does the supplier app have",
+  "doc": "06-frontend",
+  "sec": "SupplierWebApp"
+ },
+ {
+  "id": "FE-304",
+  "set": "blind5",
+  "tier": "hard",
+  "q": "where does the user interface depend most on the shape of the backend",
+  "doc": "06-frontend",
+  "sec": "tightly"
+ },
+ {
+  "id": "NEG-301",
+  "set": "blind5",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "what is a good recipe for tomato soup",
+  "none": true
+ },
+ {
+  "id": "NEG-302",
+  "set": "blind5",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "who painted the mona lisa",
+  "none": true
+ },
+ {
+  "id": "NEG-303",
+  "set": "blind5",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how many days are there in a leap year",
+  "none": true
+ },
+ {
+  "id": "EVT-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what is the exact shape an event must have to be sent between services",
+  "doc": "03-integration",
+  "sec": "contract"
+ },
+ {
+  "id": "EVT-402",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "which events carry copies of master data and which carry work requests",
+  "doc": "03-integration",
+  "sec": "Two kinds"
+ },
+ {
+  "id": "EVT-403",
+  "set": "blind6",
+  "tier": "hard",
+  "q": "a message I expected never arrived, how do I find out why",
+  "doc": "03-integration",
+  "sec": "missing event"
+ },
+ {
+  "id": "EVT-404",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "where in the code does each service send its events from",
+  "doc": "03-integration",
+  "sec": "Publisher"
+ },
+ {
+  "id": "AUTH-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what are the different kinds of callers and how are they told apart",
+  "doc": "04-authorization",
+  "sec": "audience"
+ },
+ {
+  "id": "AUTH-402",
+  "set": "blind6",
+  "tier": "hard",
+  "q": "I get a 401 from the api, what should I check",
+  "doc": "04-authorization",
+  "sec": "Debugging a 401"
+ },
+ {
+  "id": "AUTH-403",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "how are permission numbers handed out",
+  "doc": "04-authorization",
+  "sec": "numbering"
+ },
+ {
+  "id": "AUTH-404",
+  "set": "blind6",
+  "tier": "easy",
+  "q": "which settings does the login part need",
+  "doc": "04-authorization",
+  "sec": "Configuration"
+ },
+ {
+  "id": "AIPO-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what do the two repos share and where do they differ",
+  "doc": "14-aipo",
+  "sec": "side by side"
+ },
+ {
+  "id": "AIPO-402",
+  "set": "blind6",
+  "tier": "hard",
+  "q": "why was the review call failing because of how the address ended",
+  "doc": "14-aipo",
+  "sec": "4.1"
+ },
+ {
+  "id": "AIPO-403",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what is the full path of a purchase order line from our side to the review service",
+  "doc": "14-aipo",
+  "sec": "End-to-end"
+ },
+ {
+  "id": "SRCH-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "how do changes in the database reach the search index",
+  "doc": "16-azure-ai-search",
+  "sec": "write path"
+ },
+ {
+  "id": "SRCH-402",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what happens if the search service is down when a user searches",
+  "doc": "16-azure-ai-search",
+  "sec": "fail-soft"
+ },
+ {
+  "id": "SRCH-403",
+  "set": "blind6",
+  "tier": "hard",
+  "q": "are the search tests enough",
+  "doc": "16-azure-ai-search",
+  "sec": "Test coverage"
+ },
+ {
+  "id": "FP-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "the spinner covers the whole screen when a list loads, how should it behave",
+  "doc": "17-filter-panel",
+  "sec": "FP-3"
+ },
+ {
+  "id": "FP-402",
+  "set": "blind6",
+  "tier": "easy",
+  "q": "how tall should the list of options in a dropdown be",
+  "doc": "17-filter-panel",
+  "sec": "FP-6"
+ },
+ {
+  "id": "FP-403",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "two quick filter changes made the older answer overwrite the newer one",
+  "doc": "17-filter-panel",
+  "sec": "FP-9"
+ },
+ {
+  "id": "FP-404",
+  "set": "blind6",
+  "tier": "easy",
+  "q": "what colour do the chips have",
+  "doc": "17-filter-panel",
+  "sec": "FP-1"
+ },
+ {
+  "id": "SEED-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what must a script that adds test rows do so that running it again is safe",
+  "doc": "18-seeding",
+  "sec": "Rules"
+ },
+ {
+  "id": "SEED-402",
+  "set": "blind6",
+  "tier": "hard",
+  "q": "what traps are there when adding test data by hand",
+  "doc": "18-seeding",
+  "sec": "Gotchas"
+ },
+ {
+  "id": "BUG-401",
+  "set": "blind6",
+  "tier": "hard",
+  "q": "a deleted company comes back as active after an event is lost",
+  "doc": "19-known"
+ },
+ {
+  "id": "BUG-402",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "which problems have already been solved so I do not look at them again",
+  "doc": "19-known",
+  "sec": "Already fixed"
+ },
+ {
+  "id": "BUG-403",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "importing from excel fails on some machines",
+  "doc": "19-known"
+ },
+ {
+  "id": "PAT-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what must be true before the row for a source row is made",
+  "doc": "23-scoped-list",
+  "sec": "Create flow"
+ },
+ {
+  "id": "PAT-402",
+  "set": "blind6",
+  "tier": "easy",
+  "q": "what are the rules of this list pattern",
+  "doc": "23-scoped-list",
+  "sec": "Rules"
+ },
+ {
+  "id": "ARCH-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what is the one call that goes straight from one runtime to another",
+  "doc": "01-architecture",
+  "sec": "synchronous"
+ },
+ {
+  "id": "DEP-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "how do the switches in the settings change what the app does",
+  "doc": "07-deployment",
+  "sec": "switches"
+ },
+ {
+  "id": "GW-401",
+  "set": "blind6",
+  "tier": "easy",
+  "q": "what are the traps in the route list",
+  "doc": "05-gateway",
+  "sec": "Traps"
+ },
+ {
+  "id": "WF-401",
+  "set": "blind6",
+  "tier": "middle",
+  "q": "what must I run twice when I change the database model",
+  "doc": "08-development",
+  "sec": "migration"
+ },
+ {
+  "id": "CI-401",
+  "set": "blind6",
+  "tier": "hard",
+  "q": "what does the build chain really look like when you follow the wiring",
+  "doc": "13-cicd",
+  "sec": "chain"
+ },
+ {
+  "id": "NEG-401",
+  "set": "blind6",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "what is the capital of australia",
+  "none": true
+ },
+ {
+  "id": "NEG-402",
+  "set": "blind6",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "give me a workout plan for beginners",
+  "none": true
+ },
+ {
+  "id": "NEG-403",
+  "set": "blind6",
+  "tier": "easy",
+  "area": "unrelated",
+  "q": "how do plants make food from light",
+  "none": true
+ }
+]
